@@ -4,8 +4,8 @@ import Toolbar from "@mui/material/Toolbar";
 import MenuIcon from "@mui/icons-material/Menu";
 import { styled } from "@mui/material/styles";
 import { IconButton } from "@mui/material";
-import BOB from "../images/bom.png";
-import logo from "../images/mandir.webp";
+import BOB from "../images/BOB_CMYK_complogo-01.webp";
+import logo from "../images/nira1.jpeg";
 import "./AppBarCustom.css";
 import i18next, { t } from "i18next";
 import { Button } from "@mui/material";
@@ -70,6 +70,7 @@ const AppBarCustom = ({ sideBar, setSideBar, drawerWidth }) => {
             </IconButton>
           ) : (
             <img
+              className="logo"
               src={logo}
               alt=""
               style={{ maxWidth: "130px", padding: "5px 0" }}

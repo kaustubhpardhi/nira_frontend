@@ -1,6 +1,7 @@
 .dropdown {
   position: relative;
-  margin-top: 5px;
+  margin-top: 2px;
+  margin-left: 5px;
 }
 
 .menu {
@@ -36,4 +37,7 @@
   margin: 0;
   font: inherit;
   cursor: pointer;
+}
+.logo {
+  height: 70px;
 }

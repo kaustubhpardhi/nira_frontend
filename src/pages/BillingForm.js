@@ -20,6 +20,7 @@ import moment from "moment";
 import CryptoJS from "crypto-js";
 import DatePicker from "react-datepicker";
 import { useTranslation } from "react-i18next";
+import "./BillingForm.css";
 
 function decrypt(text, skey) {
   console.log({ text, skey });
@@ -399,7 +400,7 @@ const BillingForm = () => {
   }
 
   return (
-    <div>
+    <div className="receipt">
       <Box mb={2}>
         <Typography
           variant="h1"
@@ -438,7 +439,6 @@ const BillingForm = () => {
             type="number"
             disabled={true}
           />
-
           <BillingFormInput
             value={receiptDate}
             onChange={setReceiptDate}
@@ -448,7 +448,6 @@ const BillingForm = () => {
             type="text"
             disabled={true}
           />
-
           <BillingFormInput
             value={name}
             onChange={setName}
@@ -459,7 +458,6 @@ const BillingForm = () => {
             disabled={false}
             required={true}
           />
-
           <BillingFormInput
             value={address}
             onChange={setAddress}
@@ -483,7 +481,6 @@ const BillingForm = () => {
               list={"Gotras"}
             />
           </FormControl>
-
           <datalist id="Gotras">
             {gotraList.map((m) => (
               <option key={m} value={m}>
@@ -491,7 +488,6 @@ const BillingForm = () => {
               </option>
             ))}
           </datalist>
-
           <FormControl>
             <FormLabel sx={{ mb: 1, color: "black" }} htmlFor="state">
               {t("state")}
@@ -523,8 +519,7 @@ const BillingForm = () => {
               ))}
             </Select>
           </FormControl>
-
-          <FormControl>
+          {/* <FormControl>
             <FormLabel sx={{ mb: 1, color: "black" }} htmlFor="city">
               {t("city")}
             </FormLabel>
@@ -548,8 +543,7 @@ const BillingForm = () => {
                 </MenuItem>
               ))}
             </Select>
-          </FormControl>
-
+          </FormControl>{" "} */}
           <BillingFormInput
             value={mobile}
             onChange={setMobile}
@@ -560,7 +554,6 @@ const BillingForm = () => {
             disabled={false}
             required={true}
           />
-
           <BillingFormInput
             value={email}
             onChange={setEmail}
@@ -570,7 +563,6 @@ const BillingForm = () => {
             type="email"
             disabled={false}
           />
-
           <FormControl>
             <FormLabel sx={{ mb: 1, color: "black" }} htmlFor="for">
               {t("purpose")}
@@ -627,7 +619,6 @@ const BillingForm = () => {
               </Select>
             </FormControl>
           )} */}
-
           <FormControl>
             <FormLabel sx={{ mb: 1, color: "black" }} htmlFor="for">
               {" "}
@@ -640,7 +631,6 @@ const BillingForm = () => {
               dateFormat="dd-MM-yyyy"
             />
           </FormControl>
-
           <BillingFormInput
             value={amount}
             onChange={setAmount}
@@ -651,7 +641,6 @@ const BillingForm = () => {
             disabled={false}
             required={true}
           />
-
           {/* <FormControl>
             <FormLabel sx={{ mb: 1, color: "black" }} htmlFor="for">
               {t("select-id")}
@@ -675,7 +664,6 @@ const BillingForm = () => {
               ))}
             </Select>
           </FormControl> */}
-
           <BillingFormInput
             value={uid}
             onChange={setUid}

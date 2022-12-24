@@ -3,7 +3,7 @@ import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { yellow } from "@mui/material/colors";
 import pdfPhoto from "../images/nira2.jpeg";
-import bob from "../images/bom.png";
+import bob from "../images/BOB_CMYK_complogo-01.webp";
 import qr from "../images/qr.webp";
 import moment from "moment";
 
@@ -193,8 +193,7 @@ class PdfBody extends React.Component {
             <Box sx={{ textAlign: "center" }} className="pdfBottomFirst">
               <div>
                 {" "}
-                Donations to the trust are exempt u/s 80G of the Income Tax Act
-                AAATL4175HF2014{" "}
+                Donations to the trust are exempt u/s 80G of the Income Tax Act{" "}
               </div>
               <div> Nira Narsinhpur, Indapur Thaluka, Maharashtra 413211</div>
             </Box>

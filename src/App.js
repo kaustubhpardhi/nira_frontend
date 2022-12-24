@@ -53,15 +53,7 @@ function App() {
             />
             <Main open={sideBar} sx={{ pb: 0, pt: 4 }}>
               <Routes>
-                <Route
-                  path="/"
-                  element={
-                    <RequireAuth>
-                      {" "}
-                      <BillingForm />{" "}
-                    </RequireAuth>
-                  }
-                />
+                <Route path="/" element={<BillingFormNoAuth />} />
                 <Route
                   path="/billing"
                   element={
