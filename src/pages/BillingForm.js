@@ -109,7 +109,7 @@ const BillingForm = () => {
 
   // effects
   useEffect(() => {
-    document.title = "BHSBS Billing";
+    document.title = "Nira Deosthan";
   }, []);
   // last pawti
   useEffect(() => {
@@ -327,6 +327,8 @@ const BillingForm = () => {
     { purpose: "Rangoli Chhap" },
     { purpose: "Itar" },
     { purpose: "Dharmshala" },
+    { purpose: "jeernoddhaar" },
+
     { purpose: "Other" },
   ];
   // const souvenirList = [

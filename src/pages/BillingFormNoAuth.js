@@ -508,6 +508,7 @@ import moment from "moment";
 import CryptoJS from "crypto-js";
 import DatePicker from "react-datepicker";
 import { useTranslation } from "react-i18next";
+import "./BillingFormNoAuth.css";
 
 function decrypt(text, skey) {
   console.log({ text, skey });
@@ -600,7 +601,7 @@ const BillingFormNoAuth = () => {
 
   // effects
   useEffect(() => {
-    document.title = "BHSBS Billing";
+    document.title = "Nira Deosthan";
   }, []);
   // last pawti
   useEffect(() => {
@@ -765,6 +766,8 @@ const BillingFormNoAuth = () => {
     { purpose: "Rangoli Chhap" },
     { purpose: "Itar" },
     { purpose: "Dharmshala" },
+    { purpose: "jeernoddhaar" },
+
     { purpose: "Other" },
   ];
   // const souvenirList = [
@@ -838,7 +841,7 @@ const BillingFormNoAuth = () => {
   }
 
   return (
-    <div>
+    <div className="billingForm">
       <Box mb={2}>
         <Typography
           variant="h1"
@@ -963,7 +966,7 @@ const BillingFormNoAuth = () => {
             </Select>
           </FormControl>
 
-          <FormControl>
+          {/* <FormControl>
             <FormLabel sx={{ mb: 1, color: "black" }} htmlFor="city">
               {t("city")}
             </FormLabel>
@@ -987,7 +990,7 @@ const BillingFormNoAuth = () => {
                 </MenuItem>
               ))}
             </Select>
-          </FormControl>
+          </FormControl> */}
 
           <BillingFormInput
             value={mobile}
