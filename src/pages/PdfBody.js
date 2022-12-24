@@ -3,7 +3,7 @@ import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { yellow } from "@mui/material/colors";
 import pdfPhoto from "../images/nira2.jpeg";
-import bob from "../images/BOB_CMYK_complogo-01.webp";
+import bob from "../images/bom.png";
 import qr from "../images/qr.webp";
 import moment from "moment";
 
