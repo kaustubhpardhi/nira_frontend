@@ -1,0 +1,11 @@
+.thanks-letter {
+  border: 2px solid;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: darkblue;
+}
+.line-thanks {
+  display: inline-block;
+  border-top: 4px solid darkblue;
+  width: auto;
+}

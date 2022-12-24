@@ -1,0 +1,94 @@
+/* .main-p {
+  line-height: 8px;
+} */
+
+.donation-receipt {
+  border: 2px solid;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: darkblue;
+}
+.receipt-heading {
+  text-align: center;
+  font-size: 15px;
+  text-decoration: underline;
+}
+h5,
+h4 {
+  line-height: 2px;
+}
+.receipt-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.receipt-message {
+  margin: 0 auto;
+}
+.additional-details {
+  margin: 0 auto;
+  margin-top: -200px;
+  z-index: 1;
+}
+h3 {
+  text-decoration: underline;
+}
+.receipt-head {
+  display: flex;
+  flex-direction: column;
+}
+.receipt-head-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.receipt-head-logo {
+  text-align: center;
+  padding-top: 10px;
+}
+.logo-img {
+  width: 150px;
+}
+.watermark {
+  margin-top: -30px;
+}
+.watermark-img {
+  height: 100px;
+  width: 120px;
+  margin-top: -10px;
+}
+.trust-title {
+  padding-left: 10px;
+  margin-top: -20px;
+  color: darkblue;
+}
+.trust-p {
+  margin-top: -20px;
+}
+.receipt-head-footer {
+  margin-top: -20px;
+  text-align: center;
+}
+.line {
+  display: inline-block;
+  border-top: 4px solid darkblue;
+  width: auto;
+}
+.img-watermark {
+  height: 180px;
+  width: 200px;
+  opacity: 0.4;
+}
+.watermark-div {
+  text-align: center;
+}
+.about {
+  margin-top: 20px;
+}
+/* @media (max-width: 500px) {
+  .main-p {
+    line-height: 0px;
+  }
+} */
