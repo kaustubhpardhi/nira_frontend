@@ -10,7 +10,7 @@ const Success = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
+        const response = await axios.post(
           `https://nira-frontend.vercel.app/success`
         );
         console.log(response.data);
