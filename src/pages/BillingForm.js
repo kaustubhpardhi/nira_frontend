@@ -228,6 +228,9 @@ const BillingForm = () => {
       currency: "INR",
       mobileNo: mobile,
       customerEmail: email,
+      gotra: gotra,
+      purpose: forWhich,
+      pawti: pawti,
     };
     console.log(createOrderData);
     if (payment === "online") {
@@ -666,26 +669,30 @@ const BillingForm = () => {
               ))}
             </Select>
           </FormControl> */}
-          <BillingFormInput
-            value={uid}
-            onChange={setUid}
-            label={t("id-number")}
-            id="pan"
-            placeholder="PAN Number"
-            type="text"
-            disabled={false}
-            required={true}
-          />
-          <BillingFormInput
-            value={aadhar}
-            onChange={setAadhar}
-            label="Aadhar Number"
-            id="pan"
-            placeholder="Aadhar Number"
-            type="text"
-            disabled={false}
-            required={true}
-          />
+          {amount > 2000 ? (
+            <>
+              <BillingFormInput
+                value={uid}
+                onChange={setUid}
+                label={t("id-number")}
+                id="pan"
+                placeholder="PAN Number"
+                type="text"
+                disabled={false}
+                required={true}
+              />
+              <BillingFormInput
+                value={aadhar}
+                onChange={setAadhar}
+                label="Aadhar Number"
+                id="pan"
+                placeholder="Aadhar Number"
+                type="text"
+                disabled={false}
+                required={true}
+              />
+            </>
+          ) : null}
         </Box>
 
         <FormControl sx={{ mt: 2, display: " block" }}>
