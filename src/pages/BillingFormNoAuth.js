@@ -671,9 +671,9 @@ const BillingFormNoAuth = () => {
       address: { city, state, address },
       purpose: forWhich,
       amount: amount,
-      // gotra,
+      gotra,
       uid,
-      // uidType,
+      uidType,
       aadhar,
     };
 
