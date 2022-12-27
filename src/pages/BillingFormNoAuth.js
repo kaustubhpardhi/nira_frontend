@@ -720,6 +720,9 @@ const BillingFormNoAuth = () => {
       currency: "INR",
       mobileNo: mobile,
       customerEmail: email,
+      gotra: gotra,
+      purpose: forWhich,
+      pawti: pawti,
     };
     console.log(createOrderData);
     if (payment === "online") {
