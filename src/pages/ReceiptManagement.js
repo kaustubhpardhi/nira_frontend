@@ -225,7 +225,7 @@ const ReceiptManagement = () => {
         }}
       >
         <Box sx={{ my: 4, pb: 4, maxWidth: "800px", mx: "auto" }}>
-          <DonationReceipt
+          <PdfBody
             information={receiptsSelected}
             forwardRef={pdfRef}
             ref={(el) => (pdfRef = el)}
