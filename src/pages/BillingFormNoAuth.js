@@ -643,8 +643,9 @@ const BillingFormNoAuth = () => {
 
   // form submit handler
   const handleForm = (event) => {
-    event.preventDefault();
     setLoading(true);
+
+    event.preventDefault();
     if (!pawti) {
       return alert("Pawati number not found");
     }
@@ -746,32 +747,30 @@ const BillingFormNoAuth = () => {
         })
         .catch((error) => console.log(error));
     }
-    setLoading(false);
   };
 
   // lists
   const stateList = country_state_district.getAllStates();
   const forWhichList = [
-    { purpose: "Padya Puja" },
-    { purpose: "Panchamrit Puja" },
-    { purpose: "Abhishek " },
-    { purpose: "Dengi" },
-    { purpose: "Jinhodwar" },
-    { purpose: "Shasvat Puja" },
-    { purpose: "Nandadeep" },
-    { purpose: "Shanti" },
-    { purpose: "Javal" },
-    { purpose: "Upanayan" },
-    { purpose: "Photo" },
-    { purpose: "  Prakashan" },
-    { purpose: "Advance" },
-    { purpose: "Bij Mantra" },
-    { purpose: "Rangoli Chhap" },
-    { purpose: "Itar" },
-    { purpose: "Dharmshala" },
-    { purpose: "jeernoddhaar" },
+    { purpose: "पद्यपूजा" },
+    { purpose: "पंचामृत पूजा" },
+    { purpose: "अभिषेक " },
+    { purpose: "डेंगी" },
+    { purpose: "शास्वत पूजा" },
+    { purpose: "नंदादीप" },
+    { purpose: "शांती" },
+    { purpose: "जावल" },
+    { purpose: "उपनयन" },
+    { purpose: "फोटो" },
+    { purpose: "  प्रकाशन" },
+    { purpose: "अ‍ॅडव्हान्स" },
+    { purpose: "बिज मंत्र" },
+    { purpose: "रांगोळी छप" },
+    { purpose: "इटार" },
+    { purpose: "धर्मशाला" },
+    { purpose: "जीर्णोद्धार" },
 
-    { purpose: "Other" },
+    { purpose: "इतर" },
   ];
   // const souvenirList = [
   //   { type: "Front Page (cover)", amount: "3500000" },
@@ -787,50 +786,50 @@ const BillingFormNoAuth = () => {
     { type: "Permanent Account Number" },
   ];
   const gotraList = [
-    "Kashyap",
-    "Vasisths",
-    "Angiras",
-    "Attri",
-    "Mankandeye",
-    "Bharadwaj",
-    "Sankhyayen",
-    "Nityundan",
-    "Kaundinya",
-    "Jamadagni",
-    "Kaushik",
-    "Bhrugu",
-    "Vatsa",
-    "Almbayan",
-    "Katyayan",
-    "Suparnasya",
-    "Pratanoesha",
-    "Krupacharya",
-    "Vibhandik",
-    "Shilans",
-    "Haritas",
-    "Mandaviya",
-    "Nandi",
-    "Skanda",
-    "Krushnatreya",
-    "Kundal Rushi",
-    "Kapi",
-    "Mudgal",
-    "Shahandilya",
-    "VIshvamitra",
-    "Muni Bhangav",
-    "Augusti",
-    "Gautam",
-    "Garya",
-    "Parashar",
-    "Shaki",
-    "Jain",
-    "Durvas",
-    "Pratavansh",
-    "Supeenachsy",
-    "Bhargav",
-    "Vrushabah",
-    "Khojirwale",
-    "Sundesha",
+    "कश्यप",
+    "वसिष्ठ",
+    "अंगिरस",
+    "अत्री",
+    "मांकंडेय",
+    "भारद्वाज",
+    "संख्यायेन",
+    "नित्युंदन",
+    "कौंदिन्य",
+    "जमदग्नी",
+    "कौशिक",
+    "भृगु",
+    "वत्स",
+    "अल्म्बयान",
+    "कात्यायन",
+    "सुपर्णस्य",
+    "प्रतानोएशा",
+    "कृपाचार्य",
+    "विभांडिक",
+    "शिलांस",
+    "हरितास",
+    "मांडविया",
+    "नंदी",
+    "स्कंद",
+    "कृष्णात्रेय",
+    "कुंडल रुषी",
+    "कापी",
+    "मुद्गल",
+    "शाहंडिल्य",
+    "विश्वामित्र",
+    "मुनी भांगव",
+    "ऑगस्ट",
+    "गौतम",
+    "गर्या",
+    "पराशर",
+    "शकी",
+    "जैन",
+    "दुर्वा",
+    "प्रतावंश",
+    "सुपेनाची",
+    "भार्गव",
+    "वृषबाह",
+    "खोजिरवाले",
+    "सुदेशा",
   ];
 
   console.log(uidType);
@@ -839,6 +838,8 @@ const BillingFormNoAuth = () => {
     return (
       <div className="screenCenter">
         <CircularProgress />
+        <br></br>
+        <h2>कृपया थांबा</h2>
       </div>
     );
   }

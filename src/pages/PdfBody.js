@@ -94,7 +94,7 @@ class PdfBody extends React.Component {
             }}
             gutterBottom
           >
-            श्री लक्ष्मी नरसिंह देवस्थान ट्रस्ट नीरा नरसिंहपुर{" "}
+            श्री लक्ष्मी नृसिंह देवस्थान ट्रस्ट नीरा नरसिंहपुर{" "}
           </Typography>
           <Box
             className="printFlex"
@@ -166,10 +166,10 @@ class PdfBody extends React.Component {
                     <th>PAN </th>
                     <td> : {information?.uid} </td>
                   </tr>
-                  <tr>
+                  {/* <tr>
                     <th> Aadhar </th>
                     <td> : {information?.aadhar} </td>
-                  </tr>
+                  </tr> */}
                   <tr>
                     <th> Purpose </th>
                     <td> : {information?.forWhich} </td>
