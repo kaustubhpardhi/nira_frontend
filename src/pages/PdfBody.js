@@ -94,7 +94,7 @@ class PdfBody extends React.Component {
             }}
             gutterBottom
           >
-            Shri Laxmi Narasinha Deosthan Trust Nira Narasingpur{" "}
+            श्री लक्ष्मी नरसिंह देवस्थान ट्रस्ट नीरा नरसिंहपुर{" "}
           </Typography>
           <Box
             className="printFlex"
@@ -193,9 +193,10 @@ class PdfBody extends React.Component {
             <Box sx={{ textAlign: "center" }} className="pdfBottomFirst">
               <div>
                 {" "}
-                Donations to the trust are exempt u/s 80G of the Income Tax Act{" "}
+                ट्रस्ट को दान आयकर अधिनियम की धारा 80 जी के तहत छूट प्राप्त है
+                AAATS6138BF1974201{" "}
               </div>
-              <div> Nira Narsinhpur, Indapur Thaluka, Maharashtra 413211</div>
+              <div> नीरा नरसिंहपुर, इंदापुर थालुका, महाराष्ट्र 413211</div>
             </Box>
             <Box sx={{ display: "flex" }} className="pdfBottomSecond">
               <Box sx={{ marginLeft: "auto" }}>
