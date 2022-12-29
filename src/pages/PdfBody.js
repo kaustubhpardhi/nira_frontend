@@ -4,7 +4,7 @@ import { Box } from "@mui/system";
 import { yellow } from "@mui/material/colors";
 import pdfPhoto from "../images/nira2.jpeg";
 import bob from "../images/BOB_CMYK_complogo-01.webp";
-import qr from "../images/qr.webp";
+import qr from "../images/nira-deosthan-qr.png";
 import moment from "moment";
 
 const getPageMargins = () => {
