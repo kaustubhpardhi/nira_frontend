@@ -312,9 +312,9 @@ const BillingForm = () => {
   // lists
   const stateList = country_state_district.getAllStates();
   const forWhichList = [
-    { purpose: "पाद्य पूजा" },
-    { purpose: "पंचामृत पूजा" },
-    { purpose: "अभिषेक " },
+    { purpose: "पाद्य पूजा कर - ₹30", amount: 30 },
+    { purpose: "पंचामृत पूजा कर - ₹50", amount: 50 },
+    { purpose: "अभिषेक कर - ₹100 ", amount: 100 },
     { purpose: "देणगी" },
     { purpose: "शाश्वत पूजा" },
     { purpose: "नंदादीप" },
