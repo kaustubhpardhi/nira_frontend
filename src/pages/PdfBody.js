@@ -196,7 +196,7 @@ class PdfBody extends React.Component {
                 ट्रस्ट को दान आयकर अधिनियम की धारा 80 जी के तहत छूट प्राप्त है
                 AAATS6138BF1974201{" "}
               </div>
-              <div> नीरा नरसिंहपुर, इंदापुर थालुका, महाराष्ट्र 413211</div>
+              <div> नीरा नरसिंहपुर, इंदापुर तालुका, महाराष्ट्र 413211</div>
             </Box>
             <Box sx={{ display: "flex" }} className="pdfBottomSecond">
               <Box sx={{ marginLeft: "auto" }}>
