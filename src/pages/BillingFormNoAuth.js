@@ -724,6 +724,7 @@ const BillingFormNoAuth = () => {
       gotra: gotra,
       purpose: forWhich,
       pawti: pawti,
+      pan: uid,
     };
     console.log(createOrderData);
     if (payment === "online") {
@@ -830,6 +831,7 @@ const BillingFormNoAuth = () => {
     "वृषबाह",
     "खोजिरवाले",
     "सुदेशा",
+    "hello",
   ];
 
   console.log(uidType);

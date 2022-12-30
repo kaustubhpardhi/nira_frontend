@@ -43,6 +43,10 @@ const AppBarCustom = ({ sideBar, setSideBar, drawerWidth }) => {
       code: "en",
       name: "English",
     },
+    {
+      code: "kn",
+      name: "Kannada",
+    },
   ];
   const handleOpen = () => {
     setOpen(!open);
