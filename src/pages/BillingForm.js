@@ -179,7 +179,7 @@ const BillingForm = () => {
       address: { city, state, address },
       purpose: forWhich,
       amount: amount,
-      // gotra,
+      gotra,
       uid,
       // uidType,
       aadhar,
