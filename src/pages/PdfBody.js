@@ -2,7 +2,7 @@ import React from "react";
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { yellow } from "@mui/material/colors";
-import pdfPhoto from "../images/nira2.jpeg";
+import pdfPhoto from "../images/nira1.jpeg";
 import bob from "../images/BOB_CMYK_complogo-01.webp";
 import qr from "../images/nira-deosthan-qr.png";
 import moment from "moment";
@@ -13,6 +13,7 @@ const getPageMargins = () => {
     marks: crop cross;
     margin: 20px;
     margin-left: 2in;
+    margin-top:160px;
 
 }
 
@@ -27,7 +28,7 @@ const getPageMargins = () => {
         page-break-before: always;
     }
     .pdfBody{
-        height: 6in;
+        height: 5in;
         width: 4in;
         padding: 12px !important;
     }
@@ -43,7 +44,7 @@ const getPageMargins = () => {
     }
     .printFlex img{
         width:  1.8in;
-        height: 3in;
+        height: 1in;
     }
 
     .pdfTable {
@@ -62,6 +63,9 @@ const getPageMargins = () => {
     .pdfAmount{
         font-size: 14px !important;
     }
+    // .pdfGodImage{
+    //   height:20px;
+    // }
 }
 `;
   return pageStyle;
@@ -79,7 +83,7 @@ class PdfBody extends React.Component {
           className="pdfBody"
           sx={{
             py: 4,
-            px: 6,
+            px: 4,
             background: yellow[100],
             border: "1px solid black",
           }}
@@ -90,20 +94,20 @@ class PdfBody extends React.Component {
               color: "#8c2d29",
               fontWeight: "700",
               textAlign: "center",
-              my: 3,
+              my: 0,
             }}
             gutterBottom
           >
             श्री लक्ष्मी नृसिंह देवस्थान ट्रस्ट नीरा नरसिंहपुर{" "}
           </Typography>
           <Typography
-            variant="h6"
+            variant="body2"
             sx={{
               color: "#8c2d29",
               fontWeight: "400",
               textAlign: "center",
-              my: 3,
-              mt: -2,
+              my: 5,
+              mt: 0,
             }}
             gutterBottom
           >
@@ -120,7 +124,7 @@ class PdfBody extends React.Component {
           >
             {/* heading */}
             <div>
-              <img src={pdfPhoto} alt="GodImage" />
+              <img src={pdfPhoto} alt="GodImage" className="pdfGodImage" />
               <Typography
                 className="pdfAmount"
                 sx={{ fontSize: "24px", textAlign: "center" }}
@@ -218,7 +222,7 @@ class PdfBody extends React.Component {
                   className="pdfBottomImg"
                   src={bob}
                   style={{
-                    maxWidth: "150px",
+                    maxWidth: "120px",
                     display: "block",
                     marginLeft: "auto",
                     marginBottom: "16px",
@@ -228,7 +232,7 @@ class PdfBody extends React.Component {
                 <img
                   className="pdfBottomImg"
                   src={qr}
-                  style={{ width: "150px", display: "block" }}
+                  style={{ width: "120px", display: "block" }}
                   alt=""
                 />
               </Box>
