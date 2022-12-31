@@ -95,7 +95,12 @@ const AppBarCustom = ({ sideBar, setSideBar, drawerWidth }) => {
               <ul className="menu">
                 {languages.map(({ code, name }) => (
                   <li key={code} className="menu-item">
-                    <button onClick={() => i18next.changeLanguage(code)}>
+                    <button
+                      onClick={() => {
+                        i18next.changeLanguage(code);
+                        handleOpen();
+                      }}
+                    >
                       {name}
                     </button>
                   </li>

@@ -96,6 +96,20 @@ class PdfBody extends React.Component {
           >
             श्री लक्ष्मी नृसिंह देवस्थान ट्रस्ट नीरा नरसिंहपुर{" "}
           </Typography>
+          <Typography
+            variant="h6"
+            sx={{
+              color: "#8c2d29",
+              fontWeight: "400",
+              textAlign: "center",
+              my: 3,
+              mt: -2,
+            }}
+            gutterBottom
+          >
+            (पब्लिक ट्रस्ट र. नं. ए. / ५८ पुणे) PAN No. :AAATS6138B Phone No.
+            +91 9665882895
+          </Typography>
           <Box
             className="printFlex"
             sx={{
