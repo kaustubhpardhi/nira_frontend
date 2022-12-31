@@ -767,7 +767,7 @@ const BillingFormNoAuth = () => {
     { purpose: "अ‍ॅडव्हान्स" },
     { purpose: "बिज मंत्र" },
     { purpose: "रांगोळी छाप" },
-    { purpose: "इटार" },
+    // { purpose: "इटार" },
     { purpose: "धर्मशाला" },
     { purpose: "जीर्णोद्धार" },
 
