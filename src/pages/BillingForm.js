@@ -234,51 +234,99 @@ const BillingForm = () => {
     };
     console.log(createOrderData);
     if (payment === "online") {
-      axios
-        .post("/receipt/create-order", createOrderData)
-        .then((res) => {
-          const secrete = res.data.message;
-          console.log("res within create-order", res);
-          if (secrete) {
-            // setReceipt({ pawti, name, date, mobile, email, forWhich, amount, state, day, city, payment, method, bank, branch, cheque, chequeDate, month, dateNumber, gotra })
-            const decryptData = decrypt(
-              secrete,
-              "vRu9Pnhkuu9l93waNd79uIYltDVDozmZ4/CrAf67Ud8="
-            );
-            console.log("decrypt data within create-order", decryptData);
-            if (decryptData === "Invalid Mobile number !!") {
-              return alert("Invalid Mobile number !!");
-            } else if (decryptData) {
-              axios.post("/receipt/create-receipt", postData).then((res) => {
-                console.log("res within create-receipt", res);
-                navigate("/generate-receipt", {
-                  state: {
-                    pawti,
-                    name,
-                    receiptDate,
-                    mobile,
-                    email,
-                    forWhich,
-                    amount,
-                    state,
-                    city,
-                    payment,
-                    method,
-                    bank,
-                    branch,
-                    cheque,
-                    chequeDate,
-                    poojaDate,
-                    gotra,
-                    uid,
-                    aadhar,
-                  },
+      if (forWhich === "अन्नछत्र") {
+        axios
+          .post("/receipt/create-order", createOrderData)
+          .then((res) => {
+            const secrete = res.data.message;
+            console.log("res within create-order", res);
+            if (secrete) {
+              // setReceipt({ pawti, name, date, mobile, email, forWhich, amount, state, day, city, payment, method, bank, branch, cheque, chequeDate, month, dateNumber, gotra })
+              const decryptData = decrypt(
+                secrete,
+                "vRu9Pnhkuu9l93waNd79uIYltDVDozmZ4/CrAf67Ud8="
+              );
+              console.log("decrypt data within create-order", decryptData);
+              if (decryptData === "Invalid Mobile number !!") {
+                return alert("Invalid Mobile number !!");
+              } else if (decryptData) {
+                axios.post("/receipt/create-receipt", postData).then((res) => {
+                  console.log("res within create-receipt", res);
+                  navigate("/generate-receipt", {
+                    state: {
+                      pawti,
+                      name,
+                      receiptDate,
+                      mobile,
+                      email,
+                      forWhich,
+                      amount,
+                      state,
+                      city,
+                      payment,
+                      method,
+                      bank,
+                      branch,
+                      cheque,
+                      chequeDate,
+                      poojaDate,
+                      gotra,
+                      uid,
+                      aadhar,
+                    },
+                  });
                 });
-              });
+              }
             }
-          }
-        })
-        .catch((error) => console.log(error));
+          })
+          .catch((error) => console.log(error));
+      } else {
+        axios
+          .post("/receipt/create-ordertwo", createOrderData)
+          .then((res) => {
+            const secrete = res.data.message;
+            console.log("res within create-order", res);
+            if (secrete) {
+              // setReceipt({ pawti, name, date, mobile, email, forWhich, amount, state, day, city, payment, method, bank, branch, cheque, chequeDate, month, dateNumber, gotra })
+              const decryptData = decrypt(
+                secrete,
+                "2Q+5FpQVfZaM+b5XSuvpB8hW3dGAQkNhLSYNMgW1zAQ= "
+              );
+              console.log("decrypt data within create-order", decryptData);
+              if (decryptData === "Invalid Mobile number !!") {
+                return alert("Invalid Mobile number !!");
+              } else if (decryptData) {
+                axios.post("/receipt/create-receipt", postData).then((res) => {
+                  console.log("res within create-receipt", res);
+                  navigate("/generate-receipt", {
+                    state: {
+                      pawti,
+                      name,
+                      receiptDate,
+                      mobile,
+                      email,
+                      forWhich,
+                      amount,
+                      state,
+                      city,
+                      payment,
+                      method,
+                      bank,
+                      branch,
+                      cheque,
+                      chequeDate,
+                      poojaDate,
+                      gotra,
+                      uid,
+                      aadhar,
+                    },
+                  });
+                });
+              }
+            }
+          })
+          .catch((error) => console.log(error));
+      }
     } else {
       axios
         .post("/receipt/create-receipt", postData)
@@ -315,6 +363,8 @@ const BillingForm = () => {
     { purpose: "पाद्य पूजा कर - ₹30", amount: 30 },
     { purpose: "पंचामृत पूजा कर - ₹50", amount: 50 },
     { purpose: "अभिषेक कर - ₹100 ", amount: 100 },
+    { purpose: " सोळखांबा स्वच्छता- ₹50 ", amount: 50 },
+    { purpose: "अन्नछत्र" },
     { purpose: "देणगी" },
     { purpose: "शाश्वत पूजा" },
     { purpose: "नंदादीप" },

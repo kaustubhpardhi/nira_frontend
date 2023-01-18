@@ -728,25 +728,66 @@ const BillingFormNoAuth = () => {
     };
     console.log(createOrderData);
     if (payment === "online") {
-      axios
-        .post("/receipt/payout", createOrderData)
-        .then((res) => {
-          const secrete = res.data.message;
-          if (secrete) {
-            // setReceipt({ pawti, name, date, mobile, email, forWhich, amount, state, day, city, payment, method, bank, branch, cheque, chequeDate, month, dateNumber, gotra })
-            const decryptData = decrypt(
-              secrete,
-              "vRu9Pnhkuu9l93waNd79uIYltDVDozmZ4/CrAf67Ud8="
-            );
-            console.log("decrypt data within create-order", decryptData);
-            const data = JSON.parse(decryptData);
-            const paymentUrl = data.paymentUrl;
-            console.log(paymentUrl);
-            axios.post("/receipt/create-receipt", postData);
-            window.location.href = paymentUrl;
-          }
-        })
-        .catch((error) => console.log(error));
+      // axios
+      //   .post("/receipt/payout", createOrderData)
+      //   .then((res) => {
+      //     const secrete = res.data.message;
+      //     if (secrete) {
+      //       // setReceipt({ pawti, name, date, mobile, email, forWhich, amount, state, day, city, payment, method, bank, branch, cheque, chequeDate, month, dateNumber, gotra })
+      //       const decryptData = decrypt(
+      //         secrete,
+      //         "vRu9Pnhkuu9l93waNd79uIYltDVDozmZ4/CrAf67Ud8="
+      //       );
+      //       console.log("decrypt data within create-order", decryptData);
+      //       const data = JSON.parse(decryptData);
+      //       const paymentUrl = data.paymentUrl;
+      //       console.log(paymentUrl);
+      //       axios.post("/receipt/create-receipt", postData);
+      //       window.location.href = paymentUrl;
+      //     }
+      //   })
+      //   .catch((error) => console.log(error));
+      if (forWhich === "अन्नछत्र") {
+        axios
+          .post("/receipt/payout", createOrderData)
+          .then((res) => {
+            const secrete = res.data.message;
+            if (secrete) {
+              // setReceipt({ pawti, name, date, mobile, email, forWhich, amount, state, day, city, payment, method, bank, branch, cheque, chequeDate, month, dateNumber, gotra })
+              const decryptData = decrypt(
+                secrete,
+                "vRu9Pnhkuu9l93waNd79uIYltDVDozmZ4/CrAf67Ud8="
+              );
+              console.log("decrypt data within create-order", decryptData);
+              const data = JSON.parse(decryptData);
+              const paymentUrl = data.paymentUrl;
+              console.log(paymentUrl);
+              axios.post("/receipt/create-receipt", postData);
+              window.location.href = paymentUrl;
+            }
+          })
+          .catch((error) => console.log(error));
+      } else {
+        axios
+          .post("/receipt/payouttwo", createOrderData)
+          .then((res) => {
+            const secrete = res.data.message;
+            if (secrete) {
+              // setReceipt({ pawti, name, date, mobile, email, forWhich, amount, state, day, city, payment, method, bank, branch, cheque, chequeDate, month, dateNumber, gotra })
+              const decryptData = decrypt(
+                secrete,
+                "2Q+5FpQVfZaM+b5XSuvpB8hW3dGAQkNhLSYNMgW1zAQ="
+              );
+              console.log("decrypt data within create-order", decryptData);
+              const data = JSON.parse(decryptData);
+              const paymentUrl = data.paymentUrl;
+              console.log(paymentUrl);
+              axios.post("/receipt/create-receipt", postData);
+              window.location.href = paymentUrl;
+            }
+          })
+          .catch((error) => console.log(error));
+      }
     }
   };
 
@@ -756,6 +797,7 @@ const BillingFormNoAuth = () => {
     { purpose: "पाद्य पूजा कर - ₹30", amount: 30 },
     { purpose: "पंचामृत पूजा कर - ₹50", amount: 50 },
     { purpose: "अभिषेक कर - ₹100 ", amount: 100 },
+    { purpose: "अन्नछत्र" },
     { purpose: "देणगी" },
     { purpose: "शाश्वत पूजा" },
     { purpose: "नंदादीप" },
