@@ -360,10 +360,6 @@ const BillingForm = () => {
   // lists
   const stateList = country_state_district.getAllStates();
   const forWhichList = [
-    { purpose: "पाद्य पूजा कर - ₹30", amount: 30 },
-    { purpose: "पंचामृत पूजा कर - ₹50", amount: 50 },
-    { purpose: "अभिषेक कर - ₹100 ", amount: 100 },
-    { purpose: " सोळखांबा स्वच्छता- ₹50 ", amount: 50 },
     { purpose: "अन्नछत्र" },
     { purpose: "देणगी" },
     { purpose: "शाश्वत पूजा" },
@@ -379,6 +375,10 @@ const BillingForm = () => {
     // { purpose: "" },
     { purpose: "धर्मशाला" },
     { purpose: "जीर्णोद्धार" },
+    { purpose: "पाद्य पूजा कर - ₹30", amount: 30 },
+    { purpose: "पंचामृत पूजा कर - ₹50", amount: 50 },
+    { purpose: "अभिषेक कर - ₹100 ", amount: 100 },
+    { purpose: " सोळखांबा स्वच्छता- ₹50 ", amount: 50 },
 
     { purpose: "इतर" },
   ];
