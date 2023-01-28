@@ -486,7 +486,7 @@ const BillingForm = () => {
           }}
         >
           <BillingFormInput
-            value={pawti}
+            // value={pawti}
             onChange={setPawti}
             label={t("pawti-no")}
             id="pawti"

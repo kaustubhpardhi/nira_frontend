@@ -1,0 +1,33 @@
+/* Default styles */
+.footer {
+  display: flex;
+  flex-direction: row;
+  background-color: #f5f5f5;
+  justify-content: center;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-top: 27px;
+  position: relative;
+  text-align: center;
+  height: 50px;
+}
+.skitech {
+  height: 50px;
+  width: 50px;
+}
+
+/* Media query for screens smaller than 600px */
+@media only screen and (max-width: 600px) {
+  .footer {
+    flex-direction: row;
+    height: 50px;
+    position: relative;
+    /* Add more styles here to adjust the layout for small screens */
+  }
+  .skitech {
+    height: 50px;
+    width: 50px;
+    /* Add more styles here to adjust the size of the skitech class for small screens */
+  }
+}

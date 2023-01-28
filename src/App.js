@@ -17,6 +17,8 @@ import DownloadExcelButton from "./pages/DownloadExcelButton";
 import { ReceiptContext } from "./context/ReceiptContext";
 import "react-datepicker/dist/react-datepicker.css";
 import GenerateThanks from "./pages/GenerateThanks";
+import Footer from "./pages/Footer";
+
 const drawerWidth = 280;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
@@ -110,6 +112,7 @@ function App() {
           </div>
         </Box>
       </ReceiptContext.Provider>
+      <Footer />
     </div>
   );
 }
