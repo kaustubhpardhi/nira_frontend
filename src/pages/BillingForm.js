@@ -485,7 +485,7 @@ const BillingForm = () => {
             mb: 2,
           }}
         >
-          <BillingFormInput
+          {/* <BillingFormInput
             // value={pawti}
             onChange={setPawti}
             label={t("pawti-no")}
@@ -493,7 +493,7 @@ const BillingForm = () => {
             placeholder="Number"
             type="number"
             disabled={true}
-          />
+          /> */}
           <BillingFormInput
             value={receiptDate}
             onChange={setReceiptDate}

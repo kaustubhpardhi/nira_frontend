@@ -920,7 +920,7 @@ const BillingFormNoAuth = () => {
             mb: 2,
           }}
         >
-          <BillingFormInput
+          {/* <BillingFormInput
             // value={pawti}
             onChange={setPawti}
             label={t("pawti-no")}
@@ -928,7 +928,7 @@ const BillingFormNoAuth = () => {
             placeholder="Number"
             type="number"
             disabled={true}
-          />
+          /> */}
 
           <BillingFormInput
             value={receiptDate}
