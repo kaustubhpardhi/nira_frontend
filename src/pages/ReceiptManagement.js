@@ -8,7 +8,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import ReactToPdf from "react-to-pdf";
 import axios from "axios";
-import { Box, CircularProgress, IconButton } from "@mui/material";
+import { Box, CircularProgress, IconButton, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import VisibilityTwoToneIcon from "@mui/icons-material/VisibilityTwoTone";
@@ -31,6 +31,7 @@ const ReceiptManagement = () => {
   const [originalReceipts, setOriginalReceipts] = useState([]);
   const [receipts, setReceipts] = useState([]);
   const [receiptsSelected, setReceiptsSelected] = useState([]);
+  const [name, setName] = useState([]);
   const [loading, setLoading] = useState(true);
   const { t } = useTranslation();
 
@@ -172,35 +173,63 @@ const ReceiptManagement = () => {
     setReceipts(originalReceipts);
     console.log(receipts);
   };
+  const handleNameFilterChange = (event) => {
+    setName(event.target.value);
+  };
 
+  const handleFilter = () => {
+    const filteredReceipts = originalReceipts.filter((receipt) => {
+      return receipt.Name.toLowerCase().includes(name.toLowerCase());
+    });
+    setReceipts(filteredReceipts);
+  };
   return (
     <div>
-      <div className="date-filter">
-        <form onSubmit={handleSubmit}>
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <KeyboardDatePicker
-              disableToolbar
-              variant="inline"
-              format="MM/dd/yyyy"
-              margin="normal"
-              id="date-picker-inline"
-              label="Select Date"
-              value={selectedDate}
-              onChange={handleDateChange}
-              KeyboardButtonProps={{
-                "aria-label": "change date",
-              }}
-              className="datePicker"
-            />
-          </MuiPickersUtilsProvider>
-          <button className="button-5" type="submit">
-            Filter by Date
+      <div className="filters">
+        <div>
+          <input
+            type="text"
+            onChange={handleNameFilterChange}
+            className="name-field"
+            placeholder="Filter by Name"
+          />
+          <button onClick={handleFilter} className="button-5">
+            Filter
           </button>
-        </form>
-        <button className="button-6" onClick={handleReset}>
-          Reset Filter
-        </button>
+          <div>
+            <button className="button-6" onClick={handleReset}>
+              Reset Filter
+            </button>
+          </div>
+        </div>
+        <div className="date-filter">
+          <form onSubmit={handleSubmit}>
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <KeyboardDatePicker
+                disableToolbar
+                variant="inline"
+                format="MM/dd/yyyy"
+                margin="normal"
+                id="date-picker-inline"
+                label="Select Date"
+                value={selectedDate}
+                onChange={handleDateChange}
+                KeyboardButtonProps={{
+                  "aria-label": "change date",
+                }}
+                className="datePicker"
+              />
+            </MuiPickersUtilsProvider>
+            <button className="button-5" type="submit">
+              Filter by Date
+            </button>
+          </form>
+          <button className="button-6" onClick={handleReset}>
+            Reset Filter
+          </button>
+        </div>
       </div>
+
       <Paper sx={{ width: "100%" }}>
         <TableContainer>
           <Table>

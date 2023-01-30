@@ -31,7 +31,7 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: baseline;
-  width: auto;
+  width: 150px;
   height: 35px;
   margin-top: 25px;
   margin-left: 10px;
@@ -54,7 +54,7 @@
 }
 /* date-picker.css */
 .datePicker {
-  width: 300px;
+  width: 150px;
   margin: 20px auto;
 }
 .datePicker label.Mui-focused {
@@ -97,8 +97,20 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: baseline;
-  width: auto;
+  width: 130px;
   height: 35px;
   margin-top: 5px;
   margin-left: 10px;
+}
+.name-field {
+  margin-top: 50px;
+  height: 35px;
+  text-align: center;
+}
+.filters {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.name-buton {
 }
