@@ -173,6 +173,11 @@ const ReceiptManagement = () => {
     setReceipts(originalReceipts);
     console.log(receipts);
   };
+  const handleResetname = () => {
+    setName("");
+    setReceipts(originalReceipts);
+    console.log(receipts);
+  };
   const handleNameFilterChange = (event) => {
     setName(event.target.value);
   };
@@ -189,6 +194,7 @@ const ReceiptManagement = () => {
         <div>
           <input
             type="text"
+            value={name}
             onChange={handleNameFilterChange}
             className="name-field"
             placeholder="Filter by Name"
@@ -197,7 +203,7 @@ const ReceiptManagement = () => {
             Filter
           </button>
           <div>
-            <button className="button-6" onClick={handleReset}>
+            <button className="button-6" onClick={handleResetname}>
               Reset Filter
             </button>
           </div>
