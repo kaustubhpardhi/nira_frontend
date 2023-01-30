@@ -248,7 +248,7 @@ const ReceiptManagement = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {receipts.reverse().map((row, index) => (
+              {receipts.map((row, index) => (
                 <TableRow key={row.pawatiNumber} hover role="checkbox">
                   <TableCell align="center">
                     {receipts.length - index}{" "}
