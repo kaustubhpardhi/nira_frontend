@@ -32,6 +32,7 @@ const ReceiptManagement = () => {
   const [receipts, setReceipts] = useState([]);
   const [receiptsSelected, setReceiptsSelected] = useState([]);
   const [name, setName] = useState([]);
+  const [pawtino, setPawtino] = useState([]);
   const [loading, setLoading] = useState(true);
   const { t } = useTranslation();
 
@@ -148,8 +149,7 @@ const ReceiptManagement = () => {
       </div>
     );
   }
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     // format selectedDate to 'dd-mm-yyyy' format
     const options = { day: "2-digit", month: "2-digit", year: "numeric" };
     let selectedDateFormatted = selectedDate.toLocaleDateString(
@@ -171,27 +171,40 @@ const ReceiptManagement = () => {
   const handleReset = () => {
     setSelectedDate(new Date());
     setReceipts(originalReceipts);
-    console.log(receipts);
+    setName("");
+    setPawtino("");
   };
   const handleResetname = () => {
     setName("");
     setReceipts(originalReceipts);
-    console.log(receipts);
+  };
+  const handleResetpawtino = () => {
+    setPawtino("");
+    setReceipts(originalReceipts);
   };
   const handleNameFilterChange = (event) => {
     setName(event.target.value);
   };
+  const handlePawtinoFilterChange = (event) => {
+    setPawtino(event.target.value);
+  };
 
-  const handleFilter = () => {
+  const handleFilterName = () => {
     const filteredReceipts = originalReceipts.filter((receipt) => {
       return receipt.Name.toLowerCase().includes(name.toLowerCase());
+    });
+    setReceipts(filteredReceipts);
+  };
+  const handleFilterPawtino = () => {
+    const filteredReceipts = originalReceipts.filter((receipt) => {
+      return receipt.pawatiNumber === parseInt(pawtino, 10);
     });
     setReceipts(filteredReceipts);
   };
   return (
     <div>
       <div className="filters">
-        <div>
+        <div className="filter-name">
           <input
             type="text"
             value={name}
@@ -199,13 +212,30 @@ const ReceiptManagement = () => {
             className="name-field"
             placeholder="Filter by Name"
           />
-          <button onClick={handleFilter} className="button-5">
+          <button onClick={handleFilterName} className="button-5">
             Filter
           </button>
           <div>
-            <button className="button-6" onClick={handleResetname}>
+            {/* <button className="button-6" onClick={handleResetname}>
               Reset Filter
+            </button> */}
+          </div>
+        </div>
+        <div>
+          <div className="filter-pawtino">
+            <input
+              type="text"
+              value={pawtino}
+              onChange={handlePawtinoFilterChange}
+              className="pawti-field"
+              placeholder="Filter by Receipt "
+            ></input>
+            <button onClick={handleFilterPawtino} className="button-5">
+              Filter
             </button>
+            {/* <button className="button-6" onClick={handleResetpawtino}>
+              Reset Filter
+            </button> */}
           </div>
         </div>
         <div className="date-filter">
@@ -226,10 +256,12 @@ const ReceiptManagement = () => {
                 className="datePicker"
               />
             </MuiPickersUtilsProvider>
-            <button className="button-5" type="submit">
-              Filter by Date
-            </button>
           </form>
+          <button className="button-7" onClick={handleSubmit}>
+            Filter by Date
+          </button>
+        </div>
+        <div>
           <button className="button-6" onClick={handleReset}>
             Reset Filter
           </button>
