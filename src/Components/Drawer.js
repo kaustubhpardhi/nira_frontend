@@ -6,6 +6,7 @@ import List from "@mui/material/List";
 import AppBarCustom from "./AppBarCustom";
 import DrawerListItem from "./DrawerListItem";
 import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
+import DashboardIcon from "@mui/icons-material/Dashboard";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import { NavLink } from "react-router-dom";
@@ -30,6 +31,7 @@ export default function PersistentDrawerLeft({
     navigate("/login");
   };
   const { t } = useTranslation();
+  const user = JSON.parse(localStorage.getItem("user"));
 
   return (
     <Box>
@@ -60,9 +62,14 @@ export default function PersistentDrawerLeft({
           <NavLink className="navLink" to="/billing">
             <DrawerListItem text={t("receipt")} icon={<ReceiptLongIcon />} />
           </NavLink>
-          <NavLink className="navLink" to="/receipt-management">
-            <DrawerListItem text={t("receipt-m")} icon={<ListAltIcon />} />
+          <NavLink className="navLink" to="/dashboard">
+            <DrawerListItem text="Dashboard" icon={<DashboardIcon />} />
           </NavLink>
+          {user && user.role !== "accountant" && (
+            <NavLink className="navLink" to="/receipt-management">
+              <DrawerListItem text={t("receipt-m")} icon={<ListAltIcon />} />
+            </NavLink>
+          )}
           <NavLink className="navLink" to="/account">
             <DrawerListItem text={t("account")} icon={<AccountBoxIcon />} />
           </NavLink>

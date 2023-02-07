@@ -18,7 +18,7 @@ import { ReceiptContext } from "./context/ReceiptContext";
 import "react-datepicker/dist/react-datepicker.css";
 import GenerateThanks from "./pages/GenerateThanks";
 import Footer from "./pages/Footer";
-
+import Dashboard from "./pages/Dashboard";
 const drawerWidth = 280;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
@@ -100,6 +100,7 @@ function App() {
                     </RequireAuth>
                   }
                 />
+                <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/success" element={<Success />} />
                 <Route path="/failed" element={<Failed />} />
                 <Route path="/login" element={<Login />} />

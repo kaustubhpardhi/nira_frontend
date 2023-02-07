@@ -12,10 +12,18 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [change, setChange] = useState(false);
 
-  const [userData] = useState({
-    id: "admin",
-    password: "123",
-  });
+  const [userData] = useState([
+    {
+      id: "admin",
+      password: "123",
+      role: "admin",
+    },
+    {
+      id: "accountant",
+      password: "456",
+      role: "accountant",
+    },
+  ]);
 
   // localStorage
   let user = localStorage.getItem("user");
@@ -28,13 +36,17 @@ const Login = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    if (userData.id !== id) {
+    const currentUser = userData.find((u) => u.id === id);
+    if (!currentUser) {
       return alert("User not found");
     }
-    if (userData.password !== password) {
+    if (currentUser.password !== password) {
       return alert("User and password doesn't match");
     }
-    localStorage.setItem("user", true);
+    localStorage.setItem(
+      "user",
+      JSON.stringify({ id: currentUser.id, role: currentUser.role })
+    );
     setChange(!change);
   };
 
