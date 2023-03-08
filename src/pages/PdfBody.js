@@ -12,10 +12,10 @@ const getPageMargins = () => {
   @page {
     size: auto;  
     margin: 0mm;
-    // marks: crop cross;
-    // margin: 20px;
-    // margin-left: 2in;
-    // margin-top:160px;
+   marks: crop cross;
+  // margin: 20px;
+     margin-left: 8px;
+   margin-top:8px;
   
   }
 
