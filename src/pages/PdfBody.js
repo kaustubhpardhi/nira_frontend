@@ -9,30 +9,34 @@ import moment from "moment";
 
 const getPageMargins = () => {
   const pageStyle = `
-@page {
-    marks: crop cross;
-    margin: 20px;
-    margin-left: 2in;
-    margin-top:160px;
+  @page {
+    size: auto;  
+    margin: 0mm;
+    // marks: crop cross;
+    // margin: 20px;
+    // margin-left: 2in;
+    // margin-top:160px;
+  
+  }
 
-}
-
-@media all {
-.pagebreak {
-    display: none;
-}
-}
-
-@media print {
+  @media all {
     .pagebreak {
-        page-break-before: always;
+      display: none;
+    }
+  }
+
+  @media print {
+    title {
+      display: none;
+    }
+    .pagebreak {
+      page-break-before: always;
     }
     .pdfBody{
-        height: 5in;
+        height: 5.5in;
         width: 4in;
         padding: 12px !important;
     }
-
     .pdfBody h5{
         font-size: 12px !important;
     }
@@ -61,12 +65,9 @@ const getPageMargins = () => {
         width: 1in !important;
     }
     .pdfAmount{
-        font-size: 14px !important;
+        font-size: 14px ! important;
     }
-    // .pdfGodImage{
-    //   height:20px;
-    // }
-}
+  }
 `;
   return pageStyle;
 };

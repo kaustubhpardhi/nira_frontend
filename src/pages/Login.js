@@ -77,20 +77,20 @@ const Login = () => {
           Shri Laxmi Narasinha Deosthan Trust Nira Narasingpur
         </Typography>
 
-        <Box
-          sx={{
-            display: "grid",
-            gridTemplateColumns: { sm: "1fr 1.5fr", xs: "1fr" },
-            gap: 2,
-            maxWidth: "700px",
-            alignItems: "center",
-            backgroundColor: "#fff",
-            borderRadius: "10px",
-            boxShadow:
-              "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px",
-            overflow: "hidden",
-          }}
-        >
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: { sm: "1fr 1.5fr", xs: "1fr" },
+              gap: 2,
+              maxWidth: "700px",
+              alignItems: "center",
+              backgroundColor: "#fff",
+              borderRadius: "10px",
+              boxShadow:
+                "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px",
+              overflow: "hidden",
+            }}
+          >
           {/* side image login left side */}
           <img src={loginImage} className="loginImg" alt="loginImage" />
 
