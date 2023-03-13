@@ -2,7 +2,7 @@ import React from "react";
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { yellow } from "@mui/material/colors";
-import pdfPhoto from "../images/nira1.jpeg";
+import pdfPhoto from "../images/nirareceipt.png";
 import bob from "../images/BOB_CMYK_complogo-01.webp";
 import qr from "../images/nira-deosthan-qr.png";
 import moment from "moment";
