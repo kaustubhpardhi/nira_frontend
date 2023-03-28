@@ -1,104 +1,99 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
-
 
 a,
 a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 .app {
-    overflow-x: hidden;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* number input control remove  */
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /* Firefox */
-input[type=number] {
-    -moz-appearance: textfield;
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 /* nav link */
 .navLink {
-    color: grey;
+  color: grey;
 }
 
 .navLink.active {
-    color: black;
+  color: black;
 }
 
 .navLink.active svg {
-    color: black;
+  color: black;
 }
 
 .screenCenter {
-    min-height: 100vh;
-    width: 100%;
-    position: fixed;
-    z-index: 999999;
-    top: 0;
-    left: 0;
-    background-color: rgba(255, 255, 255, 0.568);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  position: fixed;
+  z-index: 999999;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.568);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-
 /* failed */
-.failed{
-    height: calc(100vh - 100px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.failed {
+  height: calc(100vh - 100px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* success */
-.success{
-    height: calc(100vh - 100px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.success {
+  height: calc(100vh - 100px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-
-
-
-
-
 @media (min-width: 600px) {
-
-    /* account_card */
-    .account_card:not(:last-child) {
-        border-right: 1px solid rgba(0, 0, 0, 0.164);
-        border-radius: 0;
-    }
+  /* account_card */
+  .account_card:not(:last-child) {
+    border-right: 1px solid rgba(0, 0, 0, 0.164);
+    border-radius: 0;
+  }
 }
 
 @media (max-width: 600px) {
-    /* .loginImg{
+  /* .loginImg{
         display: none;
     } */
 }
 
 .customInput {
-    margin-top: 1px;
-    padding: 10px 20px;
-    border: 1px solid rgba(0, 0, 0, 0.24);
-    border-radius: 5px;
-    outline: none !important;
-    width: 100%;
+  margin-top: 1px;
+  padding: 10px 20px;
+  border: 1px solid rgba(0, 0, 0, 0.24);
+  border-radius: 5px;
+  outline: none !important;
+  width: 100%;
 }
 /* 
 @media print {
@@ -107,5 +102,3 @@ input[type=number] {
         width: 3in;
     }
 } */
-
-
