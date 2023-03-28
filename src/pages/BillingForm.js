@@ -156,6 +156,9 @@ const BillingForm = () => {
     if (!pawti) {
       return alert("Pawati number not found");
     }
+    if (!gotra) {
+      return alert("Please select your gotra");
+    }
     if (payment === "offline" && !method) {
       return alert("Please check the method items");
     }
