@@ -65,6 +65,7 @@ const ReceiptManagement = () => {
       gotra,
       day,
       month,
+      uid,
     } = receipt;
     const information = {
       pawti: pawatiNumber,
@@ -92,6 +93,7 @@ const ReceiptManagement = () => {
       gotra,
       day,
       month,
+      uid,
     };
     setReceiptsSelected(information);
   };
@@ -111,6 +113,7 @@ const ReceiptManagement = () => {
       gotra,
       day,
       month,
+      uid,
     } = receipt;
     const information = {
       pawti: pawatiNumber,
@@ -138,6 +141,7 @@ const ReceiptManagement = () => {
       gotra,
       day,
       month,
+      uid: uid,
     };
     navigate("/generate-receipt", { state: information });
   };

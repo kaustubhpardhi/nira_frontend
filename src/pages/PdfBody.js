@@ -164,7 +164,9 @@ class PdfBody extends React.Component {
                     <td>
                       {" "}
                       :{" "}
-                      {information.poojaDate
+                      {information.date
+                        ? moment(information.date).format("DD-MM-yyyy")
+                        : information.poojaDate
                         ? moment(information.poojaDate).format("DD-MM-yyyy")
                         : ""}{" "}
                     </td>

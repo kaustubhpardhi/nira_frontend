@@ -171,7 +171,11 @@ const BillingForm = () => {
     if (!amount || amount < 1) {
       return alert("Please Select a Valid Amount");
     }
-
+    if (amount > 2000) {
+      if (!uid) {
+        return alert("Please enter your PAN number");
+      }
+    }
     const postData = {
       pawatiNumber: pawti,
       receiptDate,
@@ -353,6 +357,7 @@ const BillingForm = () => {
               chequeDate,
               date: poojaDate,
               gotra,
+              uid,
             },
           });
         })
