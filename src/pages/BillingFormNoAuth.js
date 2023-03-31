@@ -661,7 +661,12 @@ const BillingFormNoAuth = () => {
     if (!amount || amount < 1) {
       return alert("Please Select a Valid Amount");
     }
-
+    if (!gotra) {
+      return alert("Please enter your gotra");
+    }
+    if (!email) {
+      return alert("Please enter your email id");
+    }
     const postData = {
       pawatiNumber: pawti,
       receiptDate,
@@ -1179,7 +1184,7 @@ const BillingFormNoAuth = () => {
                 disabled={false}
                 required={true}
               />
-              <BillingFormInput
+              {/* <BillingFormInput
                 value={aadhar}
                 onChange={setAadhar}
                 label="Aadhar Number"
@@ -1188,7 +1193,7 @@ const BillingFormNoAuth = () => {
                 type="text"
                 disabled={false}
                 required={true}
-              />
+              /> */}
             </>
           ) : null}
         </Box>

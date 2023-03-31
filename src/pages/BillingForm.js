@@ -625,6 +625,7 @@ const BillingForm = () => {
             placeholder={t("email")}
             type="email"
             disabled={false}
+            required={true}
           />
           <FormControl>
             <FormLabel sx={{ mb: 1, color: "black" }} htmlFor="for">
