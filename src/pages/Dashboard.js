@@ -26,6 +26,16 @@ function Dashboard() {
   const [totalReceipts, setTotalReceipts] = useState(0);
   const [total, setTotal] = useState(0);
   const [averageAmount, setAverageAmount] = useState(0);
+  const [originalReceipts, setOriginalReceipts] = useState([]);
+  const [receipts, setReceipts] = useState([]);
+
+  useEffect(() => {
+    axios.post("/receipt/get-receipt", {}).then((res) => {
+      console.log(res.data.packages);
+      setOriginalReceipts(res.data.packages);
+      setReceipts(res.data.packages);
+    });
+  }, []);
 
   useEffect(() => {
     axios.get("/receipt/receipts-count").then((res) => {
@@ -46,7 +56,12 @@ function Dashboard() {
       setAverageAmount(amount);
     });
   }, []);
+  const today = new Date().toLocaleDateString();
+  const dailyCollection = receipts
+    .filter((obj) => obj.receiptDate === today)
+    .reduce((total, obj) => total + obj.amount, 0);
 
+  console.log(dailyCollection);
   return (
     <div className="dashboard">
       <Card
@@ -130,6 +145,34 @@ function Dashboard() {
             gutterBottom
           >
             &#8377; {averageAmount}
+          </Typography>
+        </CardContent>
+      </Card>
+      <Card
+        sx={{
+          boxShadow: "rgb(90 114 123 / 11%) 0px 7px 30px 0px",
+          borderRadius: "15px",
+          p: 2,
+          mt: 2,
+          width: "15rem",
+          height: "10rem",
+          className: "totalReceipts",
+        }}
+      >
+        <CardContent>
+          <Typography
+            sx={{ fontSize: 18, fontWeight: "bold" }}
+            color={grey[500]}
+            gutterBottom
+          >
+            Today's Collection Amount
+          </Typography>
+          <Typography
+            sx={{ fontSize: 24, fontWeight: "bold" }}
+            color={green[600]}
+            gutterBottom
+          >
+            &#8377; {dailyCollection}
           </Typography>
         </CardContent>
       </Card>
