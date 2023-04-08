@@ -156,9 +156,7 @@ const BillingForm = () => {
     if (!pawti) {
       return alert("Pawati number not found");
     }
-    if (!gotra) {
-      return alert("Please select your gotra");
-    }
+
     if (payment === "offline" && !method) {
       return alert("Please check the method items");
     }
@@ -174,6 +172,10 @@ const BillingForm = () => {
     if (amount > 2000) {
       if (!uid) {
         return alert("Please enter your PAN number");
+      } else if (!gotra) {
+        return alert("Please select your gotra");
+      } else if (!email) {
+        return alert("Please enter your mail");
       }
     }
     const postData = {
@@ -625,7 +627,7 @@ const BillingForm = () => {
             placeholder={t("email")}
             type="email"
             disabled={false}
-            required={true}
+            required={false}
           />
           <FormControl>
             <FormLabel sx={{ mb: 1, color: "black" }} htmlFor="for">

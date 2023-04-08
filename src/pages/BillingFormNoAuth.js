@@ -661,11 +661,14 @@ const BillingFormNoAuth = () => {
     if (!amount || amount < 1) {
       return alert("Please Select a Valid Amount");
     }
-    if (!gotra) {
-      return alert("Please enter your gotra");
-    }
-    if (!email) {
-      return alert("Please enter your email id");
+    if (amount > 2000) {
+      if (!uid) {
+        return alert("Please enter your PAN number");
+      } else if (!gotra) {
+        return alert("Please select your gotra");
+      } else if (!email) {
+        return alert("Please enter your mail");
+      }
     }
     const postData = {
       pawatiNumber: pawti,
@@ -1054,7 +1057,7 @@ const BillingFormNoAuth = () => {
             placeholder={t("mobile")}
             type="number"
             disabled={false}
-            required={true}
+            required={false}
           />
 
           <BillingFormInput
