@@ -21,6 +21,7 @@ import CurrencyRupeeOutlinedIcon from "@mui/icons-material/CurrencyRupeeOutlined
 import AccountBalanceOutlinedIcon from "@mui/icons-material/AccountBalanceOutlined";
 import "./Dashboard.css";
 import axios from "axios";
+import { CSVLink } from "react-csv";
 
 function Dashboard() {
   const [totalReceipts, setTotalReceipts] = useState(0);
@@ -28,15 +29,21 @@ function Dashboard() {
   const [averageAmount, setAverageAmount] = useState(0);
   const [originalReceipts, setOriginalReceipts] = useState([]);
   const [receipts, setReceipts] = useState([]);
+  const [poojaReceipts, setPoojaReceipts] = useState([]);
+  const [shashwatReceipts, setShashwatReceipts] = useState([]);
 
   useEffect(() => {
     axios.post("/receipt/get-receipt", {}).then((res) => {
-      console.log(res.data.packages);
       setOriginalReceipts(res.data.packages);
       setReceipts(res.data.packages);
     });
   }, []);
-
+  useEffect(() => {
+    axios.get("receipt/download-receipts").then((res) => {
+      console.log(res.data);
+      setPoojaReceipts(res.data);
+    });
+  }, []);
   useEffect(() => {
     axios.get("/receipt/receipts-count").then((res) => {
       if (res.data) {
@@ -45,6 +52,17 @@ function Dashboard() {
       }
     });
   });
+  useEffect(() => {
+    const today = new Date().toISOString().slice(0, 10);
+    console.log(today);
+    const filteredReceipts = poojaReceipts.filter(
+      (receipt) =>
+        receipt.purpose === "शाश्वत पूजा" &&
+        receipt.poojaDate.slice(0, 10) === today
+    );
+    console.log(filteredReceipts);
+    setShashwatReceipts(filteredReceipts);
+  }, [poojaReceipts]);
   useEffect(() => {
     axios.get("/receipt/get-total-amount").then((res) => {
       setTotal(res.data.Total_Amount);
@@ -63,14 +81,37 @@ function Dashboard() {
   const year = new Date(dateArray[2]).getFullYear();
 
   const convertedDate = `${month}-${day}-${year}`;
-  console.log(convertedDate);
   const dailyCollection = receipts
     .filter((obj) => obj.receiptDate === convertedDate)
     .reduce((total, obj) => total + obj.amount, 0);
 
-  console.log(dailyCollection);
+  const headers = [
+    { label: "Pre Acknowledge Number", key: "pawatiNumber" },
+    { label: "Date", key: "receiptDate" },
+    { label: "ID Code", key: "uidType" },
+    { label: "Unique Identification Number ", key: "uid" },
+    { label: "Section Code", key: "section" },
+    { label: "Unique Registration Number", key: "urn" },
+    { label: "Date of Issuance of Unique Registration Number", key: "urnDate" },
+    { label: "Name of donor", key: "Name" },
+    { label: "Address of donor", key: "address.city" },
+    { label: "Donation Type", key: "donationType" },
+    { label: "Mode of Receipt", key: "modeOfPayment.mode" },
+    { label: "Amount of Donation(Indian Rupees)", key: "amount" },
+    { label: "Email", key: "email" },
+    { label: "Phone Number", key: "mobileNumber " },
+    { label: "Purpose of donation", key: "purpose" },
+  ];
+  const filename = "shashwatpooja";
   return (
-    <div className="dashboard">
+    <div
+      className="dashboard"
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 1fr)",
+        gap: "1rem",
+      }}
+    >
       <Card
         sx={{
           boxShadow: "rgb(90 114 123 / 11%) 0px 7px 30px 0px",
@@ -181,6 +222,37 @@ function Dashboard() {
           >
             &#8377; {dailyCollection}
           </Typography>
+        </CardContent>
+      </Card>
+      <Card
+        sx={{
+          boxShadow: "rgb(90 114 123 / 11%) 0px 7px 30px 0px",
+          borderRadius: "15px",
+          p: 2,
+          mt: 2,
+          width: "15rem",
+          height: "10rem",
+          className: "totalReceipts",
+        }}
+      >
+        <CardContent>
+          <Typography
+            sx={{ fontSize: 18, fontWeight: "bold" }}
+            color={grey[500]}
+            gutterBottom
+          >
+            Today's Shashwat Pooja
+          </Typography>
+          <Button variant="contained" color="eighth" sx={{ height: "2rem" }}>
+            <CSVLink
+              headers={headers}
+              data={shashwatReceipts}
+              filename={filename}
+              style={{ textDecoration: "#bc4749 ", color: "white" }}
+            >
+              Download
+            </CSVLink>
+          </Button>
         </CardContent>
       </Card>
     </div>
