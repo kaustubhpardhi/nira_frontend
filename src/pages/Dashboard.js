@@ -57,8 +57,15 @@ function Dashboard() {
     });
   }, []);
   const today = new Date().toLocaleDateString();
+  const dateArray = today.split("/");
+  const day = dateArray[0].padStart(2, "0");
+  const month = dateArray[1].padStart(2, "0");
+  const year = new Date(dateArray[2]).getFullYear();
+
+  const convertedDate = `${month}-${day}-${year}`;
+  console.log(convertedDate);
   const dailyCollection = receipts
-    .filter((obj) => obj.receiptDate === today)
+    .filter((obj) => obj.receiptDate === convertedDate)
     .reduce((total, obj) => total + obj.amount, 0);
 
   console.log(dailyCollection);
