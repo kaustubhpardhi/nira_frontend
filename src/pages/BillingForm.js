@@ -511,7 +511,7 @@ const BillingForm = () => {
             id="date"
             placeholder="Receipt Date"
             type="text"
-            disabled={true}
+            disabled={false}
           />
           <BillingFormInput
             value={name}

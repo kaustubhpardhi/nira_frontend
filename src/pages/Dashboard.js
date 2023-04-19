@@ -31,7 +31,12 @@ function Dashboard() {
   const [receipts, setReceipts] = useState([]);
   const [poojaReceipts, setPoojaReceipts] = useState([]);
   const [shashwatReceipts, setShashwatReceipts] = useState([]);
-
+  const [ornamentTotalValue, setOrnamentTotalValue] = useState([]);
+  useEffect(() => {
+    axios.get("/ornament/get-totalvalue").then((res) => {
+      setOrnamentTotalValue(res.data.Total_Value);
+    });
+  }, []);
   useEffect(() => {
     axios.post("/receipt/get-receipt", {}).then((res) => {
       setOriginalReceipts(res.data.packages);
@@ -255,6 +260,34 @@ function Dashboard() {
           </Button>
         </CardContent>
       </Card>
+      {/* <Card
+        sx={{
+          boxShadow: "rgb(90 114 123 / 11%) 0px 7px 30px 0px",
+          borderRadius: "15px",
+          p: 2,
+          mt: 2,
+          width: "15rem",
+          height: "10rem",
+          className: "totalReceipts",
+        }}
+      >
+        <CardContent>
+          <Typography
+            sx={{ fontSize: 18, fontWeight: "bold" }}
+            color={grey[500]}
+            gutterBottom
+          >
+            Ornament's Total Value
+          </Typography>
+          <Typography
+            sx={{ fontSize: 24, fontWeight: "bold" }}
+            color={green[600]}
+            gutterBottom
+          >
+            &#8377; {ornamentTotalValue}
+          </Typography>
+        </CardContent>
+      </Card> */}
     </div>
   );
 }

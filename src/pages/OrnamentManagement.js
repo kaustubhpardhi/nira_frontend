@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import VisibilityTwoToneIcon from "@mui/icons-material/VisibilityTwoTone";
 import ReactToPrint from "react-to-print";
-import PdfBody from "./PdfBody";
+import PdfBodyOrnament from "./PdfBodyOrnament";
 import DonationReceipt from "./DonationReceipt";
 import PrintIcon from "@mui/icons-material/Print";
 import { useTranslation } from "react-i18next";
@@ -22,10 +22,9 @@ import {
   MuiPickersUtilsProvider,
 } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
-import "./ReceiptManagement.css";
-import { MenuItem, FormControl, FormLabel, Select } from "@mui/material";
+import "./OrnamentManagement.css";
 
-const ReceiptManagement = () => {
+const OrnamentManagement = () => {
   let pdfRef = React.createRef();
   const navigate = useNavigate();
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -35,7 +34,6 @@ const ReceiptManagement = () => {
   const [name, setName] = useState([]);
   const [pawtino, setPawtino] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [filter, setFilter] = useState([]);
   const { t } = useTranslation();
 
   // const [user] = useState({ role: 'user' })
@@ -43,7 +41,7 @@ const ReceiptManagement = () => {
 
   // effects
   useEffect(() => {
-    axios.post("/receipt/get-receipt", {}).then((res) => {
+    axios.post("/ornament/get-ornament-receipt", {}).then((res) => {
       console.log(res.data.packages);
       setOriginalReceipts(res.data.packages);
 
@@ -51,50 +49,34 @@ const ReceiptManagement = () => {
       setLoading(false);
     });
   }, []);
-  const filterList = ["Name", "Receipt"];
+
   const pdfDownloadHandler = (receipt) => {
     const {
       pawatiNumber,
       Name,
-      poojaDate,
       receiptDate,
       mobileNumber,
       email,
-      purpose,
-      amount,
+      ornamentValue,
+      ornamentName,
+      ornamentType,
+      ornamentWeight,
       address,
-      modeOfPayment,
       gotra,
-      day,
-      month,
       uid,
     } = receipt;
     const information = {
       pawti: pawatiNumber,
       name: Name,
-      poojaDate,
       receiptDate,
       mobile: mobileNumber,
       email,
-      forWhich: purpose,
-      amount,
-      payment: !!modeOfPayment ? "Offline" : "Online",
-      method: !!modeOfPayment
-        ? !!modeOfPayment.ChequeDD
-          ? "ChequeDD"
-          : "Cash"
-        : "",
-      state: address?.state,
-      district: address?.district,
-      city: address?.city,
-      pin: address?.pinCode,
-      bank: modeOfPayment?.ChequeDetail?.bankName,
-      branch: modeOfPayment?.ChequeDetail?.bankBranch,
-      cheque: modeOfPayment?.ChequeDetail?.chequeNumber,
-      chequeDate: modeOfPayment?.ChequeDetail?.chequeDate,
       gotra,
-      day,
-      month,
+      state: address?.state,
+      ornamentName,
+      ornamentType,
+      ornamentValue,
+      ornamentWeight,
       uid,
     };
     setReceiptsSelected(information);
@@ -104,48 +86,32 @@ const ReceiptManagement = () => {
     const {
       pawatiNumber,
       Name,
-      poojaDate,
+      receiptDate,
       mobileNumber,
       email,
-      purpose,
-      amount,
+      ornamentValue,
+      ornamentName,
+      ornamentType,
+      ornamentWeight,
       address,
-      modeOfPayment,
-      receiptDate,
       gotra,
-      day,
-      month,
       uid,
     } = receipt;
     const information = {
       pawti: pawatiNumber,
       name: Name,
-      poojaDate,
+      receiptDate,
       mobile: mobileNumber,
       email,
-      forWhich: purpose,
-      amount,
-      payment: !!modeOfPayment ? "Offline" : "Online",
-      method: !!modeOfPayment
-        ? modeOfPayment.ChequeDD
-          ? "ChequeDD"
-          : "Cash"
-        : "",
-      state: address?.state,
-      district: address?.district,
-      city: address?.city,
-      pin: address?.pinCode,
-      bank: modeOfPayment?.ChequeDetail?.bankName,
-      branch: modeOfPayment?.ChequeDetail?.bankBranch,
-      cheque: modeOfPayment?.ChequeDetail?.chequeNumber,
-      chequeDate: modeOfPayment?.ChequeDetail?.chequeDate,
-      receiptDate,
       gotra,
-      day,
-      month,
-      uid: uid,
+      state: address?.state,
+      ornamentName,
+      ornamentType,
+      ornamentValue,
+      ornamentWeight,
+      uid,
     };
-    navigate("/generate-receipt", { state: information });
+    navigate("/generate-ornament", { state: information });
   };
 
   if (loading) {
@@ -209,38 +175,7 @@ const ReceiptManagement = () => {
   };
   return (
     <div>
-      {/* <FormControl>
-        <FormLabel sx={{ mb: 1, color: "black" }} htmlFor="state">
-          {t("state")}
-        </FormLabel>
-        <Select
-          id="state"
-          placeholder="state"
-          sx={{ width: "100%" }}
-          color="third"
-          size="small"
-          value={state}
-          onChange={(e) => {
-            setState(e.target.value);
-          }}
-        >
-          <MenuItem value={0} disabled>
-            {t("select-one")}
-          </MenuItem>
-          {stateList.map((s) => (
-            <MenuItem
-              key={s?.id}
-              name={s?.id}
-              value={s?.name}
-              selected={s.name === "Tripura"}
-              onClick={() => setCity("")}
-            >
-              {s?.name}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl> */}
-      <div className="filters">
+      {/* <div className="filters">
         <div className="filter-name">
           <input
             type="text"
@@ -252,6 +187,7 @@ const ReceiptManagement = () => {
           <button onClick={handleFilterName} className="button-5">
             Filter
           </button>
+          <div></div>
         </div>
         <div>
           <div className="filter-pawtino">
@@ -295,9 +231,9 @@ const ReceiptManagement = () => {
             Reset Filter
           </button>
         </div>
-      </div>
+      </div> */}
 
-      <Paper sx={{ width: "100%" }}>
+      <Paper sx={{ width: "100%", mt: "3rem" }}>
         <TableContainer>
           <Table>
             <TableHead>
@@ -305,10 +241,8 @@ const ReceiptManagement = () => {
                 <TableCell align="center"> {t("Serial No.")} </TableCell>
                 <TableCell align="center"> {t("receipt")} </TableCell>
                 <TableCell align="center"> {t("name")}</TableCell>
-                <TableCell align="center"> {t("purpose")} </TableCell>
-                <TableCell align="center"> {t("amount")} </TableCell>
-                <TableCell align="center"> Payment Mode </TableCell>
-
+                <TableCell align="center"> Ornament Name </TableCell>
+                <TableCell align="center"> Ornament Value </TableCell>
                 {user.role === "admin" && (
                   <TableCell align="center"> {t("options")}</TableCell>
                 )}
@@ -322,11 +256,10 @@ const ReceiptManagement = () => {
                   </TableCell>
                   <TableCell align="center"> {row.pawatiNumber} </TableCell>
                   <TableCell align="center"> {row.Name} </TableCell>
-                  <TableCell align="center"> {row.purpose} </TableCell>
-                  <TableCell align="center"> &#x20B9; {row.amount} </TableCell>
+                  <TableCell align="center"> {row.ornamentName} </TableCell>
                   <TableCell align="center">
                     {" "}
-                    {row.modeOfPayment.mode}{" "}
+                    &#x20B9; {row.ornamentValue}{" "}
                   </TableCell>
 
                   {user.role === "admin" && (
@@ -392,7 +325,7 @@ const ReceiptManagement = () => {
         }}
       >
         <Box sx={{ my: 4, pb: 4, maxWidth: "800px", mx: "auto" }}>
-          <PdfBody
+          <PdfBodyOrnament
             information={receiptsSelected}
             forwardRef={pdfRef}
             ref={(el) => (pdfRef = el)}
@@ -403,4 +336,4 @@ const ReceiptManagement = () => {
   );
 };
 
-export default ReceiptManagement;
+export default OrnamentManagement;
