@@ -219,7 +219,7 @@ const OrnamentForm = () => {
             disableElevation
             onClick={handleOrnamentMgm}
           >
-            Ornament Management
+            Ornament Management 📜
           </Button>
         </div>
 

@@ -77,12 +77,12 @@ export default function PersistentDrawerLeft({
           <NavLink className="navLink" to="/download-receipt">
             <DrawerListItem text={t("receipt-d")} icon={<FileDownloadIcon />} />
           </NavLink>
-          {/* <NavLink className="navLink" to="/ornament-donation">
+          <NavLink className="navLink" to="/ornament-donation">
             <DrawerListItem
               text="Ornaments Donation"
               icon={<VolunteerActivismIcon />}
             />
-          </NavLink> */}
+          </NavLink>
           <div style={{ marginTop: "auto", textAlign: "center" }}>
             <Button
               variant="contained"

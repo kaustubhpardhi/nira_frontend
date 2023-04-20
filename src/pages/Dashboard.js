@@ -260,7 +260,7 @@ function Dashboard() {
           </Button>
         </CardContent>
       </Card>
-      {/* <Card
+      <Card
         sx={{
           boxShadow: "rgb(90 114 123 / 11%) 0px 7px 30px 0px",
           borderRadius: "15px",
@@ -287,7 +287,7 @@ function Dashboard() {
             &#8377; {ornamentTotalValue}
           </Typography>
         </CardContent>
-      </Card> */}
+      </Card>
     </div>
   );
 }
