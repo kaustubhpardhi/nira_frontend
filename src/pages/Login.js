@@ -2,6 +2,7 @@ import { Box, Button, FormControl, TextField, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import bob from "../images/BOB_CMYK_complogo-01.webp";
+import ReCAPTCHA from "react-google-recaptcha";
 
 import loginImage from "../images/nira1.jpeg";
 
@@ -15,7 +16,7 @@ const Login = () => {
   const [userData] = useState([
     {
       id: "admin",
-      password: "123",
+      password: "Niradeosthan@admin895",
       role: "admin",
     },
     {
@@ -38,10 +39,10 @@ const Login = () => {
     event.preventDefault();
     const currentUser = userData.find((u) => u.id === id);
     if (!currentUser) {
-      return alert("User not found");
+      return alert("User and password not found");
     }
     if (currentUser.password !== password) {
-      return alert("User and password doesn't match");
+      return alert("User and password not found");
     }
     localStorage.setItem(
       "user",
@@ -77,26 +78,26 @@ const Login = () => {
           Shri Laxmi Narasinha Deosthan Trust Nira Narasingpur
         </Typography>
 
-          <Box
-            sx={{
-              display: "grid",
-              gridTemplateColumns: { sm: "1fr 1.5fr", xs: "1fr" },
-              gap: 2,
-              maxWidth: "700px",
-              alignItems: "center",
-              backgroundColor: "#fff",
-              borderRadius: "10px",
-              boxShadow:
-                "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px",
-              overflow: "hidden",
-            }}
-          >
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: { sm: "1fr 1.5fr", xs: "1fr" },
+            gap: 2,
+            maxWidth: "700px",
+            alignItems: "center",
+            backgroundColor: "#fff",
+            borderRadius: "10px",
+            boxShadow:
+              "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px",
+            overflow: "hidden",
+          }}
+        >
           {/* side image login left side */}
           <img src={loginImage} className="loginImg" alt="loginImage" />
 
           {/* login form right site  */}
           <div>
-            <Box component="form" onSubmit={submitHandler}>
+            <Box component="form" onSubmit={submitHandler} autocomplete="off">
               <Box sx={{ p: 4 }}>
                 <Typography
                   variant="h5"
@@ -117,6 +118,7 @@ const Login = () => {
                     color="eighth"
                     size="small"
                     placeholder="Username"
+                    autocomplete="off"
                   />
                 </FormControl>
                 <FormControl sx={{ display: "block", my: 2 }}>
@@ -130,6 +132,7 @@ const Login = () => {
                     size="small"
                     type="password"
                     placeholder="Password"
+                    autocomplete="off"
                   />
                 </FormControl>
 

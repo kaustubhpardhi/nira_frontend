@@ -17,6 +17,7 @@ import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
 import logo from "../images/nira1.jpeg";
 import { Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 
 // navigate
 
@@ -83,6 +84,10 @@ export default function PersistentDrawerLeft({
               icon={<VolunteerActivismIcon />}
             />
           </NavLink>
+          {/* <NavLink className="navLink" to="/register-user">
+            <DrawerListItem text="Register User" icon={<PersonAddAlt1Icon />} />
+          </NavLink> */}
+
           <div style={{ marginTop: "auto", textAlign: "center" }}>
             <Button
               variant="contained"

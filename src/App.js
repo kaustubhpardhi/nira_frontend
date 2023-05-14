@@ -22,6 +22,7 @@ import Dashboard from "./pages/Dashboard";
 import OrnamentForm from "./pages/OrnamentForm";
 import GenerateOrnament from "./pages/GenerateOrnament";
 import OrnamentManagement from "./pages/OrnamentManagement";
+import RegisterUser from "./pages/RegisterUser";
 const drawerWidth = 280;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
@@ -127,7 +128,22 @@ function App() {
                     </RequireAuth>
                   }
                 />
-                <Route path="/dashboard" element={<Dashboard />} />
+                <Route
+                  path="/register-user"
+                  element={
+                    <RequireAuth>
+                      <RegisterUser />
+                    </RequireAuth>
+                  }
+                />
+                <Route
+                  path="/dashboard"
+                  element={
+                    <RequireAuth>
+                      <Dashboard />
+                    </RequireAuth>
+                  }
+                />
                 <Route path="/success" element={<Success />} />
                 <Route path="/failed" element={<Failed />} />
                 <Route path="/login" element={<Login />} />
