@@ -29,13 +29,32 @@ const Login = () => {
   ]);
 
   // localStorage
-  let user = localStorage.getItem("user");
+  // Check if user data is present in the cookie
+  const getCookie = (name) => {
+    const value = "; " + document.cookie;
+    const parts = value.split("; " + name + "=");
+    if (parts.length === 2) return parts.pop().split(";").shift();
+  };
+
+  // localStorage
+  let user = getCookie("user");
 
   useEffect(() => {
     if (user) {
       navigate("/billing");
     }
   }, [user, change, navigate]);
+
+  const setCookie = (name, value, secure = false) => {
+    const cookieOptions = {
+      path: "/",
+      secure: secure,
+      sameSite: "lax",
+      // Set the HTTPOnly flag to prevent client-side JavaScript from accessing the cookie
+      httpOnly: true,
+    };
+    document.cookie = `${name}=${value}; ${cookieOptions}`;
+  };
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -50,13 +69,14 @@ const Login = () => {
     if (currentUser.password !== password) {
       return alert("User and password not found");
     }
+    const expirationDate = new Date(0); // Create a new Date object with value 0 (which is equivalent to 'Thu, 01 Jan 1970 00:00:00 UTC')
+    document.cookie = `user=${currentUser.id}; expires=${expirationDate}; path=/`; // Set the cookie with expires attribute set to 0
     localStorage.setItem(
       "user",
       JSON.stringify({ id: currentUser.id, role: currentUser.role })
     );
     setChange(!change);
   };
-
   const handleCaptchaChange = (token) => {
     setCaptchaToken(token);
   };
