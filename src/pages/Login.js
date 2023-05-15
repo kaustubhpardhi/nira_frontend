@@ -42,7 +42,7 @@ const Login = () => {
       console.log("navigate");
       navigate("/billing");
     }
-  }, [user]);
+  }, [user, navigate]);
 
   const setCookie = (name, value, secure = false) => {
     const cookieOptions = {
