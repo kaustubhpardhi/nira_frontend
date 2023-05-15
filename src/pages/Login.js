@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import bob from "../images/BOB_CMYK_complogo-01.webp";
 import ReCAPTCHA from "react-google-recaptcha";
+import Hcaptcha from "react-hcaptcha";
 
 import loginImage from "../images/nira1.jpeg";
 
@@ -12,6 +13,7 @@ const Login = () => {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const [change, setChange] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState("");
 
   const [userData] = useState([
     {
@@ -38,6 +40,10 @@ const Login = () => {
   const submitHandler = (event) => {
     event.preventDefault();
     const currentUser = userData.find((u) => u.id === id);
+    if (!captchaToken) {
+      alert("Please complete the captcha!");
+      return;
+    }
     if (!currentUser) {
       return alert("User and password not found");
     }
@@ -51,6 +57,9 @@ const Login = () => {
     setChange(!change);
   };
 
+  const handleCaptchaChange = (token) => {
+    setCaptchaToken(token);
+  };
   return (
     <Box
       sx={{
@@ -135,6 +144,10 @@ const Login = () => {
                     autocomplete="off"
                   />
                 </FormControl>
+                <Hcaptcha
+                  sitekey="29c1c5da-4977-472a-be41-6862ba94aa36"
+                  onVerify={handleCaptchaChange}
+                />
 
                 <Box sx={{ mt: 3, textAlign: "center" }}>
                   <Button
