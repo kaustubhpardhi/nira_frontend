@@ -28,31 +28,14 @@ const Login = () => {
     },
   ]);
 
-  const getCookie = (name) => {
-    const value = "; " + document.cookie;
-    const parts = value.split("; " + name + "=");
-    if (parts.length === 2) return parts.pop().split(";").shift();
-  };
-
   // localStorage
-  let user = getCookie("user");
+  let user = localStorage.getItem("user");
 
   useEffect(() => {
     if (user) {
       navigate("/billing");
     }
   }, [user, change, navigate]);
-
-  const setCookie = (name, value, secure = false) => {
-    const cookieOptions = {
-      path: "/",
-      secure: secure,
-      sameSite: "lax",
-      // Set the HTTPOnly flag to prevent client-side JavaScript from accessing the cookie
-      httpOnly: true,
-    };
-    document.cookie = `${name}=${value}; ${cookieOptions}`;
-  };
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -67,11 +50,9 @@ const Login = () => {
     if (currentUser.password !== password) {
       return alert("User and password not found");
     }
-    // Store user data in the cookie with HTTPOnly and secure flags
-    setCookie(
+    localStorage.setItem(
       "user",
-      JSON.stringify({ id: currentUser.id, role: currentUser.role }),
-      window.location.protocol === "https:"
+      JSON.stringify({ id: currentUser.id, role: currentUser.role })
     );
     setChange(!change);
   };
