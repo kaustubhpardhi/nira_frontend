@@ -74,7 +74,6 @@ const Login = () => {
       JSON.stringify({ id: currentUser.id, role: currentUser.role }),
       window.location.protocol === "https:"
     );
-    setChange(!change);
   };
 
   const handleCaptchaChange = (token) => {
