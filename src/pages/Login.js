@@ -28,8 +28,9 @@ const Login = () => {
     },
   ]);
 
-  // Session storage
-  let user = sessionStorage.getItem("user");
+  // localStorage
+  // localStorage
+  let user = localStorage.getItem("user");
 
   useEffect(() => {
     if (user) {
@@ -70,7 +71,7 @@ const Login = () => {
     if (currentUser.password !== password) {
       return alert("User and password not found");
     }
-    sessionStorage.setItem(
+    localStorage.setItem(
       "user",
       JSON.stringify({ id: currentUser.id, role: currentUser.role })
     );
