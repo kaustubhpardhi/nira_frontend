@@ -52,7 +52,16 @@ const Login = () => {
       httpOnly: true,
       expires: "Session",
     };
-    document.cookie = `${name}=${value}; ${cookieOptions}`;
+    document.cookie = `${name}=${value}; ${serialize(cookieOptions)}`;
+  };
+  const serialize = (obj) => {
+    const cookieParts = [];
+    for (let key in obj) {
+      cookieParts.push(
+        `${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`
+      );
+    }
+    return cookieParts.join("; ");
   };
 
   const submitHandler = (event) => {
