@@ -66,10 +66,10 @@ const Login = () => {
   const submitHandler = (event) => {
     event.preventDefault();
     const currentUser = userData.find((u) => u.id === id);
-    if (!captchaToken) {
-      alert("Please complete the captcha!");
-      return;
-    }
+    // if (!captchaToken) {
+    //   alert("Please complete the captcha!");
+    //   return;
+    // }
     if (!currentUser) {
       return alert("User and password not found");
     }
@@ -85,9 +85,9 @@ const Login = () => {
     setChange(!change);
   };
 
-  const handleCaptchaChange = (token) => {
-    setCaptchaToken(token);
-  };
+  // const handleCaptchaChange = (token) => {
+  //   setCaptchaToken(token);
+  // };
   return (
     <Box
       sx={{
@@ -172,10 +172,10 @@ const Login = () => {
                     autocomplete="off"
                   />
                 </FormControl>
-                <Hcaptcha
+                {/* <Hcaptcha
                   sitekey="29c1c5da-4977-472a-be41-6862ba94aa36"
                   onVerify={handleCaptchaChange}
-                />
+                /> */}
 
                 <Box sx={{ mt: 3, textAlign: "center" }}>
                   <Button
