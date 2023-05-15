@@ -27,36 +27,23 @@ const Login = () => {
       role: "accountant",
     },
   ]);
-  let user = JSON.parse(localStorage.getItem("user"));
-  let sessionExpired = false;
+  let user = localStorage.getItem("user");
 
   useEffect(() => {
     if (user) {
-      if (sessionExpired) {
-        clearUser();
-      } else {
-        navigate("/billing");
-      }
+      navigate("/billing");
     }
-
-    const handleBeforeUnload = () => {
-      setCookie("sessionExpired", true);
-    };
-
-    window.addEventListener("beforeunload", handleBeforeUnload);
-
-    return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-    };
-  }, [user, navigate]);
+  }, [user, change, navigate]);
 
   const setCookie = (name, value, secure = false) => {
     const cookieOptions = {
       path: "/",
       sameSite: "lax",
+      // Set the HTTPOnly flag to prevent client-side JavaScript from accessing the cookie
       httpOnly: true,
     };
 
+    // If the application is accessed over HTTPS, set the secure flag
     if (window.location.protocol === "https:") {
       cookieOptions.secure = true;
     }
@@ -68,10 +55,6 @@ const Login = () => {
     document.cookie = `${name}=${value}; ${cookieString}`;
   };
 
-  const clearUser = () => {
-    localStorage.removeItem("user");
-  };
-
   const submitHandler = (event) => {
     event.preventDefault();
     const currentUser = userData.find((u) => u.id === id);
@@ -79,17 +62,22 @@ const Login = () => {
       alert("Please complete the captcha!");
       return;
     }
-    if (!currentUser || currentUser.password !== password) {
+    if (!currentUser) {
       return alert("User and password not found");
     }
-    const userData = {
-      id: currentUser.id,
-      role: currentUser.role,
-    };
-    localStorage.setItem("user", JSON.stringify(userData));
+    if (currentUser.password !== password) {
+      return alert("User and password not found");
+    }
+    localStorage.setItem(
+      "user",
+      JSON.stringify({ id: currentUser.id, role: currentUser.role })
+    );
     setChange(!change);
-    setCookie("user", JSON.stringify(userData), true);
-    setCookie("sessionExpired", false);
+    setCookie(
+      "user",
+      JSON.stringify({ id: currentUser.id, role: currentUser.role }),
+      true
+    );
   };
 
   const handleCaptchaChange = (token) => {
