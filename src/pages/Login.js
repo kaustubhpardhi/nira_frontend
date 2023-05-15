@@ -41,7 +41,7 @@ const Login = () => {
     if (user) {
       navigate("/billing");
     }
-  }, [user, change, navigate]);
+  }, [user]);
 
   const setCookie = (name, value, secure = false) => {
     const cookieOptions = {
@@ -163,10 +163,10 @@ const Login = () => {
                     autocomplete="off"
                   />
                 </FormControl>
-                {/* <Hcaptcha
+                <Hcaptcha
                   sitekey="29c1c5da-4977-472a-be41-6862ba94aa36"
                   onVerify={handleCaptchaChange}
-                /> */}
+                />
 
                 <Box sx={{ mt: 3, textAlign: "center" }}>
                   <Button
