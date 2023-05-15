@@ -28,8 +28,6 @@ const Login = () => {
     },
   ]);
 
-  // localStorage
-  // Check if user data is present in the cookie
   const getCookie = (name) => {
     const value = "; " + document.cookie;
     const parts = value.split("; " + name + "=");
@@ -45,27 +43,15 @@ const Login = () => {
     }
   }, [user, change, navigate]);
 
-  const setCookie = (name, value, expirationDate, path) => {
+  const setCookie = (name, value, secure = false) => {
     const cookieOptions = {
-      expires: expirationDate,
-      path: path,
-      secure: true, // Set the secure flag to true if accessing content over HTTPS
-      sameSite: "Lax",
-      httpOnly: true, // Set the HTTPOnly flag to true
+      path: "/",
+      secure: secure,
+      sameSite: "lax",
+      // Set the HTTPOnly flag to prevent client-side JavaScript from accessing the cookie
+      httpOnly: true,
     };
-
-    const cookieString = `${name}=${value}; ${serialize(cookieOptions)}`;
-    document.cookie = cookieString;
-  };
-
-  const serialize = (obj) => {
-    const cookieParts = [];
-    for (let key in obj) {
-      cookieParts.push(
-        `${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`
-      );
-    }
-    return cookieParts.join("; ");
+    document.cookie = `${name}=${value}; ${cookieOptions}`;
   };
 
   const submitHandler = (event) => {
@@ -81,15 +67,11 @@ const Login = () => {
     if (currentUser.password !== password) {
       return alert("User and password not found");
     }
-
-    const expirationDate = new Date(0); // Create a new Date object with value 0 (which is equivalent to 'Thu, 01 Jan 1970 00:00:00 UTC')
-
-    // Set the cookie using the setCookie function
-    setCookie("user", currentUser.id, expirationDate, "/");
-
-    localStorage.setItem(
+    // Store user data in the cookie with HTTPOnly and secure flags
+    setCookie(
       "user",
-      JSON.stringify({ id: currentUser.id, role: currentUser.role })
+      JSON.stringify({ id: currentUser.id, role: currentUser.role }),
+      window.location.protocol === "https:"
     );
     setChange(!change);
   };
