@@ -39,6 +39,7 @@ const Login = () => {
 
   useEffect(() => {
     if (user) {
+      console.log("navigate");
       navigate("/billing");
     }
   }, [user]);
@@ -51,7 +52,6 @@ const Login = () => {
       // Set the HTTPOnly flag to prevent client-side JavaScript from accessing the cookie
       httpOnly: true,
     };
-    document.cookie = `${name}=${value}; ${cookieOptions}`;
   };
 
   const submitHandler = (event) => {
