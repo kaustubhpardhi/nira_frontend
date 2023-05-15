@@ -28,25 +28,25 @@ const Login = () => {
     },
   ]);
 
-  // localStorage
-  // localStorage
   let user = localStorage.getItem("user");
 
   useEffect(() => {
     if (user) {
       navigate("/billing");
     }
+    return () => {
+      // Clear the user from localStorage when the component unmounts or session ends
+      localStorage.removeItem("user");
+    };
   }, [user, change, navigate]);
 
   const setCookie = (name, value, secure = false) => {
     const cookieOptions = {
       path: "/",
       sameSite: "lax",
-      // Set the HTTPOnly flag to prevent client-side JavaScript from accessing the cookie
       httpOnly: true,
     };
 
-    // If the application is accessed over HTTPS, set the secure flag
     if (window.location.protocol === "https:") {
       cookieOptions.secure = true;
     }
@@ -65,10 +65,7 @@ const Login = () => {
       alert("Please complete the captcha!");
       return;
     }
-    if (!currentUser) {
-      return alert("User and password not found");
-    }
-    if (currentUser.password !== password) {
+    if (!currentUser || currentUser.password !== password) {
       return alert("User and password not found");
     }
     localStorage.setItem(
