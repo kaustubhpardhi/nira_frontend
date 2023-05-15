@@ -50,7 +50,7 @@ const Login = () => {
       httpOnly: true,
       // Set expires to "Session" to delete the cookie when the browser is closed
     };
-    document.cookie = `${name}=${value}; ${serialize(cookieOptions)}`;
+    document.cookie = `${name}=${value}; ${cookieOptions}`;
   };
   const serialize = (obj) => {
     const cookieParts = [];
