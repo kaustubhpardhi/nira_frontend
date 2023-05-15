@@ -48,6 +48,7 @@ const Login = () => {
       secure: secure,
       sameSite: "lax",
       httpOnly: true,
+
       // Set expires to "Session" to delete the cookie when the browser is closed
     };
     document.cookie = `${name}=${value}; ${cookieOptions}`;
