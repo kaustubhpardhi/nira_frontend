@@ -50,6 +50,7 @@ const Login = () => {
       sameSite: "lax",
       // Set the HTTPOnly flag to prevent client-side JavaScript from accessing the cookie
       httpOnly: true,
+      expires: "Session",
     };
     document.cookie = `${name}=${value}; ${cookieOptions}`;
   };
