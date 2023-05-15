@@ -45,15 +45,27 @@ const Login = () => {
     }
   }, [user, change, navigate]);
 
-  const setCookie = (name, value, secure = false) => {
+  const setCookie = (name, value, expirationDate, path) => {
     const cookieOptions = {
-      path: "/",
-      secure: secure,
-      sameSite: "lax",
-      // Set the HTTPOnly flag to prevent client-side JavaScript from accessing the cookie
-      httpOnly: true,
+      expires: expirationDate,
+      path: path,
+      secure: true, // Set the secure flag to true if accessing content over HTTPS
+      sameSite: "Lax",
+      httpOnly: true, // Set the HTTPOnly flag to true
     };
-    document.cookie = `${name}=${value}; ${cookieOptions}`;
+
+    const cookieString = `${name}=${value}; ${serialize(cookieOptions)}`;
+    document.cookie = cookieString;
+  };
+
+  const serialize = (obj) => {
+    const cookieParts = [];
+    for (let key in obj) {
+      cookieParts.push(
+        `${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`
+      );
+    }
+    return cookieParts.join("; ");
   };
 
   const submitHandler = (event) => {
@@ -69,14 +81,19 @@ const Login = () => {
     if (currentUser.password !== password) {
       return alert("User and password not found");
     }
+
     const expirationDate = new Date(0); // Create a new Date object with value 0 (which is equivalent to 'Thu, 01 Jan 1970 00:00:00 UTC')
-    document.cookie = `user=${currentUser.id}; expires=${expirationDate}; path=/`; // Set the cookie with expires attribute set to 0
+
+    // Set the cookie using the setCookie function
+    setCookie("user", currentUser.id, expirationDate, "/");
+
     localStorage.setItem(
       "user",
       JSON.stringify({ id: currentUser.id, role: currentUser.role })
     );
     setChange(!change);
   };
+
   const handleCaptchaChange = (token) => {
     setCaptchaToken(token);
   };
