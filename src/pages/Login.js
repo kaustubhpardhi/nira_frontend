@@ -39,10 +39,9 @@ const Login = () => {
 
   useEffect(() => {
     if (user) {
-      console.log("navigate");
       navigate("/billing");
     }
-  }, [user, navigate]);
+  }, [user, change, navigate]);
 
   const setCookie = (name, value, secure = false) => {
     const cookieOptions = {
@@ -74,6 +73,7 @@ const Login = () => {
       JSON.stringify({ id: currentUser.id, role: currentUser.role }),
       window.location.protocol === "https:"
     );
+    setChange(!change);
   };
 
   const handleCaptchaChange = (token) => {
