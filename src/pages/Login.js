@@ -29,6 +29,7 @@ const Login = () => {
   ]);
 
   // localStorage
+  // localStorage
   let user = localStorage.getItem("user");
 
   useEffect(() => {
@@ -36,6 +37,26 @@ const Login = () => {
       navigate("/billing");
     }
   }, [user, change, navigate]);
+
+  const setCookie = (name, value, secure = false) => {
+    const cookieOptions = {
+      path: "/",
+      sameSite: "lax",
+      // Set the HTTPOnly flag to prevent client-side JavaScript from accessing the cookie
+      httpOnly: true,
+    };
+
+    // If the application is accessed over HTTPS, set the secure flag
+    if (window.location.protocol === "https:") {
+      cookieOptions.secure = true;
+    }
+
+    const cookieString = Object.entries(cookieOptions)
+      .map(([key, val]) => `${key}=${val}`)
+      .join("; ");
+
+    document.cookie = `${name}=${value}; ${cookieString}`;
+  };
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -55,6 +76,11 @@ const Login = () => {
       JSON.stringify({ id: currentUser.id, role: currentUser.role })
     );
     setChange(!change);
+    setCookie(
+      "user",
+      JSON.stringify({ id: currentUser.id, role: currentUser.role }),
+      true
+    );
   };
 
   const handleCaptchaChange = (token) => {
