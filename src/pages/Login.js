@@ -42,15 +42,13 @@ const Login = () => {
       navigate("/billing");
     }
   }, [user, change, navigate]);
-
   const setCookie = (name, value, secure = false) => {
     const cookieOptions = {
       path: "/",
       secure: secure,
       sameSite: "lax",
-      // Set the HTTPOnly flag to prevent client-side JavaScript from accessing the cookie
       httpOnly: true,
-      expires: "Session",
+      // Set expires to "Session" to delete the cookie when the browser is closed
     };
     document.cookie = `${name}=${value}; ${serialize(cookieOptions)}`;
   };
