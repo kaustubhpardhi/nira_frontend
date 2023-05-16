@@ -50,7 +50,25 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
 function App() {
   const [sideBar, setSideBar] = useState(false);
   const [receipt, setReceipt] = useState({});
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      localStorage.removeItem("user");
+    };
 
+    const handleUnload = (event) => {
+      if (!event.persisted) {
+        localStorage.removeItem("user");
+      }
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    window.addEventListener("unload", handleUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+      window.removeEventListener("unload", handleUnload);
+    };
+  }, []);
   useEffect(() => {
     // Set Cache-Control: no-store header
     const setNoStoreHeader = () => {
